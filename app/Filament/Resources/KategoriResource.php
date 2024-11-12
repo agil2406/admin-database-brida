@@ -31,6 +31,10 @@ class KategoriResource extends Resource
  
     protected static ?string $navigationGroup = 'Master Data';
 
+    protected static ?string $navigationLabel = 'Kategori';
+    protected ?string $heading = 'Kategori';
+    protected static ?string $title = 'Kategori';
+    
     public static function form(Form $form): Form
     {
         return $form

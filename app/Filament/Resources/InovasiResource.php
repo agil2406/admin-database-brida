@@ -17,7 +17,11 @@ class InovasiResource extends Resource
 {
     protected static ?string $model = Inovasi::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
+
+    protected static ?string $navigationLabel = 'Inovasi';
+    protected ?string $heading = 'Inovasi';
+    protected static ?string $title = 'Inovasi';
 
     public static function form(Form $form): Form
     {

@@ -26,9 +26,13 @@ class TipeResource extends Resource
 {
     protected static ?string $model = Tipe::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-office';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $navigationGroup = 'Master Data';
+
+    protected static ?string $navigationLabel = 'Tipe Data';
+    protected ?string $heading = 'Tipe Data';
+    protected static ?string $title = 'Tipe Data';
 
     public static function form(Form $form): Form
     {
