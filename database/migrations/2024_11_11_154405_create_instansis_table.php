@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_instansi')->nullable()->unique();
             $table->string('slug_instansi')->nullable();
+            $table->string('alamat_instansi')->nullable();
             $table->timestamps();
         });
     }

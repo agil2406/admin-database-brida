@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('tipes', function (Blueprint $table) {
             $table->id();
             $table->string('nama_tipe')->nullable();
-            $table->string('slug_tipe')->nullable();
-            $table->enum('jenis_tipe', ['inovasi', 'riset'])->nullable();
+            $table->string('slug_tipe')->nullable()->unique();
+            $table->stirng('deskripsi_tipe')->nullable();
             $table->timestamps();
         });
     }

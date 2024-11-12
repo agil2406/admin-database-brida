@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateInovasi extends CreateRecord
 {
     protected static string $resource = InovasiResource::class;
+
+    protected static bool $canCreateAnother = false;
 }
