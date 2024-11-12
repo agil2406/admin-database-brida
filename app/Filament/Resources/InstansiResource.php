@@ -56,7 +56,6 @@ class InstansiResource extends Resource
                     ->label('Alamat Instansi')
                     ->placeholder('Masukkan alamat lengkap')
                     ->columnSpanFull()
-                    ->maxLength(255)
                     ->rows(3)
                     ->required(),
             
@@ -78,6 +77,7 @@ class InstansiResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

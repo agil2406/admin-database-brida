@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
+            ->font('Poppins')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -56,6 +57,9 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->sidebarCollapsibleOnDesktop()
+            ->brandName('Database BRIDA NTB')
+            // ->brandLogo(asset('images/logopemprov.png'))
+            ->favicon(asset('images/logopemprov.png'))
             ->spa();
             // ->navigationGroups([
             //     NavigationGroup::make()

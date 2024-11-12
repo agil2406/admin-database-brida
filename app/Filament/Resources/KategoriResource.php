@@ -32,8 +32,12 @@ class KategoriResource extends Resource
     protected static ?string $navigationGroup = 'Master Data';
 
     protected static ?string $navigationLabel = 'Kategori';
-    protected ?string $heading = 'Kategori';
+    
+    protected static ?string $heading = 'Kategori';
+
     protected static ?string $title = 'Kategori';
+
+    protected static ?string $label = 'Kategori';
     
     public static function form(Form $form): Form
     {
@@ -89,6 +93,7 @@ class KategoriResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

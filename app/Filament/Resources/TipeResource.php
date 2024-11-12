@@ -18,6 +18,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
@@ -30,16 +31,22 @@ class TipeResource extends Resource
 
     protected static ?string $navigationGroup = 'Master Data';
 
-    protected static ?string $navigationLabel = 'Tipe Data';
-    protected ?string $heading = 'Tipe Data';
-    protected static ?string $title = 'Tipe Data';
+    protected static ?string $navigationLabel = 'Jenis Program';
+
+    protected static ?string $slug = 'jenis-programs';
+
+    protected static ?string $heading = 'Jenis Program';
+
+    protected static ?string $title = 'Jenis Program';
+
+    protected static ?string $label = 'Jenis Program';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('nama_tipe')
-                        ->label('Nama tipe')
+                        ->label('Nama Program')
                         ->live(onBlur: true)
                         ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
                             if (($get('slug_tipe') ?? '') !== Str::slug($old)) {
@@ -54,10 +61,9 @@ class TipeResource extends Resource
                         ->label('Slug tipe'),
                 
                 Textarea::make('deskripsi_tipe')
-                        ->label('Deskripsi Tipe')
+                        ->label('Deskripsi Program')
                         ->placeholder('Innovative Government Award adalah ...')
                         ->columnSpanFull()
-                        ->maxLength(255)
                         ->rows(3)
                         ->required(),
         
@@ -69,7 +75,7 @@ class TipeResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama_tipe')
-                ->label('Nama Tipe')
+                ->label('Nama Program')
                 ->searchable()
                 ->sortable()
                 ->description(fn (Tipe $record): string => Str::words($record->deskripsi_tipe, 10), position: 'below')
@@ -79,6 +85,7 @@ class TipeResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
