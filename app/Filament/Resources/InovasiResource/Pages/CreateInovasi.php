@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Filament\Resources\InovasiResource\Pages;
+
+use App\Filament\Resources\InovasiResource;
+use Filament\Actions;
+use Filament\Resources\Pages\CreateRecord;
+
+class CreateInovasi extends CreateRecord
+{
+    protected static string $resource = InovasiResource::class;
+}
