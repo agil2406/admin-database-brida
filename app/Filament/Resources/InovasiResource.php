@@ -27,6 +27,7 @@ use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -82,9 +83,6 @@ class InovasiResource extends Resource
                                         }
                                         // Menyimpan slug yang telah diubah ke field 'slug_inovasi'
                                         $set('slug_inovasi', $slug);
-                                        
-                                        // Menyimpan slug ke field 'nama_file', jika ini sesuai dengan logika Anda
-                                        $set('nama_file', $slug);
                                     })
                                     // ->required()
                                     ->columnSpanFull(),
@@ -243,47 +241,40 @@ class InovasiResource extends Resource
                                             // Membuat nama file berdasarkan slug_inovasi dan menambahkan ekstensi file yang sesuai
                                             return 'inovasis-' . now()->timestamp . '-' . $file->getClientOriginalName() . '.' . $file->getClientOriginalExtension();
                                         })
-                                        // ->afterStateUpdated(function (UploadedFile $file) {
-                                        //     // Mendapatkan slug_inovasi yang sudah diset di langkah pertama
-                                        //     $slug = $get('slug_inovasi');
-                                            
-                                        //     // Jika ada perubahan nama file, set nama file berdasarkan slug_inovasi
-                                        //     if ($state) {
-                                        //         'inovasis-' . now()->timestamp . '-' . $file->getClientOriginalName() . '.' . $file->getClientOriginalExtension();
+                                        // ->afterStateUpdated(function ($state, Set $set) {
+                                        //     if ($state instanceof UploadedFile) {
+                                        //         // Mendapatkan path dari direktori penyimpanan
+                                        //         $filePath = 'files/inovasi/' . $state->hashName();
+                            
+                                        //         // Simpan path ke field 'path_file'
+                                        //         $set('path_file', $filePath);
                                         //     }
                                         // })
                                         ->columnSpanFull(),
 
                                     Hidden::make('nama_file')
-                                        ->label('Nama File'), // Menetapkan nama file ke hidden field
+                                        ->label('Nama File'), 
                             
                                     Hidden::make('tipe_file')
                                         ->default('inovasi'),
                             
-                                    // PdfViewerField::make('path_file')
-                                    //     ->label('View the PDF')
-                                    //     ->minHeight('40svh')
-                                    //     ->columnSpanFull()
-                                    //     ->fileUrl(function ($record) {
-                                    //         if (!$record || !$record->file) {
-                                    //             return asset('files/default.pdf');
-                                    //         }
+                                        // PdfViewerField::make('path_file')
+                                        // ->label('View the PDF')
+                                        // ->minHeight('40svh')
+                                        // ->columnSpanFull()
+                                        // ->fileUrl(function ($record) {
+                                        //     if (!$record || !$record->path_file) {
+                                        //         return asset('files/default.pdf');
+                                        //     }
+                                    
+                                        //     try {
+                                        //         return Storage::url($record->path_file);
+                                        //     } catch (\Exception $e) {
+                                        //         Log::error('Error getting file URL: ' . $e->getMessage());
+                                        //         return asset('files/default.pdf');
+                                        //     }
+                                        // })
                                         
-                                    //         $path = $record->file->path_file ?? '';
-                                        
-                                    //         if ($path) {
-                                    //             try {
-                                    //                 return Storage::url($path);
-                                    //             } catch (\Exception $e) {
-                                    //                 // Log the error and return a default URL
-                                    //                 Log::error('Error getting file URL: ' . $e->getMessage());
-                                    //                 return asset('files/default.pdf');
-                                    //             }
-                                    //         }
-                                        
-                                    //         return asset('files/default.pdf');
-                                    //     })
-
                                         // ->fileUrl(function ($record) {
                                         //     // Cek jika parameter 'record' ada di rute dan file tersedia
                                         //     if ($record && $record->file && $record->file->isNotEmpty()) {
@@ -311,7 +302,23 @@ class InovasiResource extends Resource
     {
         return $table
             ->columns([
-                //
+            TextColumn::make('nama_inovasi')
+                ->label('Nama Inovasi')
+                ->searchable()
+                ->sortable(),
+                // ->description(fn (Inovasi $record): string => Str::words($record->fungsi_inovasi,5), position: 'below'),
+            TextColumn::make('instansi.nama_instansi')
+                ->label('Nama Instansi')
+                ->searchable()
+                ->sortable(),
+            TextColumn::make('tipe.nama_tipe')
+                ->label('Program Inovasi')
+                ->searchable()
+                ->sortable(),
+            TextColumn::make('tahun_inovasi')
+                ->label('Tahun Inovasi')
+                ->searchable()
+                ->sortable(),
             ])
             ->filters([
                 //
