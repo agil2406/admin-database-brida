@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Filament\Resources\InstansiResource\Pages;
+namespace App\Filament\Resources\RisetResource\Pages;
 
-use App\Filament\Resources\InstansiResource;
+use App\Filament\Resources\RisetResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Support\Facades\Storage;
 
-class EditInstansi extends EditRecord
+class EditRiset extends EditRecord
 {
-    protected static string $resource = InstansiResource::class;
+    protected static string $resource = RisetResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
+            Actions\ViewAction::make(),
             Actions\DeleteAction::make(),
         ];
     }
 
-    
     protected function getRedirectUrl(): string 
     { 
         return $this->getResource()::getUrl('index'); 
     } 
-
 }

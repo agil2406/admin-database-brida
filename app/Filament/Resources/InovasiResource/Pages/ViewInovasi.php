@@ -4,22 +4,16 @@ namespace App\Filament\Resources\InovasiResource\Pages;
 
 use App\Filament\Resources\InovasiResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditInovasi extends EditRecord
+class ViewInovasi extends ViewRecord
 {
     protected static string $resource = InovasiResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            Actions\EditAction::make(),
         ];
     }
-    
-    protected function getRedirectUrl(): string 
-    { 
-        return $this->getResource()::getUrl('index'); 
-    } 
 }

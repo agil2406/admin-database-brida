@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Filament\Resources\InovasiResource\Pages;
+namespace App\Filament\Resources\RisetResource\Pages;
 
-use App\Filament\Resources\InovasiResource;
+use App\Filament\Resources\RisetResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateInovasi extends CreateRecord
+class CreateRiset extends CreateRecord
 {
-    protected static string $resource = InovasiResource::class;
+    protected static string $resource = RisetResource::class;
 
     protected static bool $canCreateAnother = false;
+
     
     protected function getRedirectUrl(): string 
     { 

@@ -37,24 +37,15 @@ class Inovasi extends Model
         return $this->belongsTo(Tipe::class,'tipe_id');
     }
 
-    protected static function booted()
+    protected static function boot()
     {
+        parent::boot();
+
         static::creating(function ($model) {
             // Menetapkan user_id berdasarkan ID pengguna yang sedang login
             $model->user_id = Auth::id(); // Atau bisa menggunakan $model->user_id = Auth::user()->id;
         });
 
-        // Updating event: Delete old file before updating with new file
-        static::updating(function ($model) {
-            if ($model->isDirty('file')) { // Check if the 'file' attribute has been updated
-                $oldFile = $model->getOriginal('file'); // Get the original file before update
-                if ($oldFile) {
-                    // Delete the old file from storage
-                    Storage::disk('public')->delete($oldFile->path_file);
-                    $oldFile->delete(); // Delete the old file record from the database
-                }
-            }
-        });
 
     }
 }

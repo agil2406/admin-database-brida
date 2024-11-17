@@ -23,6 +23,7 @@ return new class extends Migration
 
             $table->string('nama_peneliti')->nullable();
             $table->string('alamat_peneliti')->nullable();
+            $table->string('kontak_peneliti')->nullable();
             $table->enum('daerah_peneliti', [
                 'kota mataram',
                 'kab. lombok barat',

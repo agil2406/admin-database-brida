@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InovasiResource\Pages;
-use App\Filament\Resources\InovasiResource\RelationManagers;
+use App\Filament\Resources\InovasiResource\RelationManagers\FileRelationManager;
 use App\Models\Inovasi;
 use App\Models\Instansi;
 use App\Models\Kategori;
@@ -28,6 +28,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -64,6 +65,7 @@ class InovasiResource extends Resource
                             ->schema([
                                 TextInput::make('nama_inovasi')
                                     ->label('Nama Inovasi')
+                                    ->required()
                                     ->extraAttributes(['class' => 'w-full'])
                                     ->helperText('Masukkan nama inovasi dengan lengkap.')
                                     ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
@@ -81,6 +83,8 @@ class InovasiResource extends Resource
                                         if ($existingCount > 0) {
                                             $slug .= '-' . ($existingCount + 1); // Menambahkan angka agar slug unik
                                         }
+
+                                        $set('wizard.4.nama_file', $slug);
                                         // Menyimpan slug yang telah diubah ke field 'slug_inovasi'
                                         $set('slug_inovasi', $slug);
                                     })
@@ -94,6 +98,7 @@ class InovasiResource extends Resource
                                     ->label('Kategori')
                                     ->relationship('kategori', 'nama_kategori')
                                     ->searchable()
+                                    ->required()
                                     ->extraAttributes(['class' => 'w-full'])
                                     ->helperText(new HtmlString('<a href="'.route('filament.admin.resources.kategoris.create').'">Tambah kategori ?</a>'))
                                     ->options(function () {
@@ -105,12 +110,14 @@ class InovasiResource extends Resource
                                     ->placeholder('Fungsi / Manfaat Inovasi')
                                     ->helperText('Masukkan fungsi atau manfaat inovasi dengan singkat.')
                                     ->rows(3)
+                                    ->required()
                                     ->maxLength(255),
 
                                 TextInput::make('tahun_inovasi')
                                     ->label('Tahun')
                                     ->placeholder('YYYY')
                                     ->numeric()
+                                    ->required()
                                     ->minLength(4)
                                     ->maxLength(4)
                                     ->rules('digits:4')
@@ -118,7 +125,7 @@ class InovasiResource extends Resource
                                     ->afterStateUpdated(function ($state, $set) {
                                         // Validasi untuk memastikan tahun antara 2010 dan tahun saat ini
                                         if ($state && ($state < 2010 || $state > intval(date('Y')))) {
-                                            $set('year', null); // Reset jika tahun di luar rentang
+                                            $set('tahun_inovasi', null); // Reset jika tahun di luar rentang
                                             Notification::make()
                                                 ->title('Tahun tidak valid.')
                                                 ->body('Masukkan tahun antara 2010 dan tahun saat ini.')
@@ -130,18 +137,20 @@ class InovasiResource extends Resource
                                 Select::make('sertifikat_inovasi')
                                     ->label('Apakah Inovasi Sudah Memiliki Sertifikat ?')
                                     ->options([
-                                        'Ya' => 'Ya',
-                                        'Tidak' => 'Tidak',
+                                        'ya' => 'Ya',
+                                        'tidak' => 'Tidak',
                                     ])
-                                    ->default('Tidak'),
+                                    ->required()
+                                    ->default('tidak'),
 
                                 Select::make('desiminasi_inovasi')
                                     ->label('Apakah Inovasi Sudah Dilakukan Desiminasi ?')
                                     ->options([
-                                        'Ya' => 'Ya',
-                                        'Tidak' => 'Tidak',
+                                        'ya' => 'Ya',
+                                        'tidak' => 'Tidak',
                                     ])
-                                    ->default('Tidak')
+                                    ->required()
+                                    ->default('tidak')
                                     ->helperText('Diseminasi adalah proses penyebaran ide, gagasan, inovasi, atau hasil penelitian kepada khalayak yang lebih luas'),
                             ]),
 
@@ -150,16 +159,19 @@ class InovasiResource extends Resource
                             ->schema([
                                 TextInput::make('nama_inovator')
                                     ->label('Nama Inovator')
+                                    ->required()
                                     ->helperText('Masukkan nama lengkap inovator'),
 
                                 Textarea::make('alamat_inovator')
                                     ->label('Alamat Inovator')
+                                    ->required()
                                     ->placeholder('Masukkan alamat lengkap')
                                     ->rows(3)
                                     ->helperText('Masukkan alamat lengkap inovator'),
 
                                 TextInput::make('kontak_inovator')
                                     ->label('Kontak Inovator')
+                                    ->required()
                                     ->placeholder('+62xxxxxxxxxxx')
                                     ->rules(['regex:/^\+62\d{9,13}$/'])
                                     ->maxLength(16)
@@ -168,18 +180,19 @@ class InovasiResource extends Resource
                                 Select::make('daerah_inovator')
                                     ->label('Kota / Kabupaten Inovator')
                                     ->options([
-                                        'Kota Mataram' => 'Kota Mataram',
-                                        'Kab. Lombok Barat' => 'Kab. Lombok Barat',
-                                        'Kab. Lombok Timur' => 'Kab. Lombok Timur',
-                                        'Kab. Lombok Utara' => 'Kab. Lombok Utara',
-                                        'Kab. Lombok Tengah' => 'Kab. Lombok Tengah',
-                                        'Kab. Sumbawa' => 'Kab. Sumbawa',
-                                        'Kab. Sumbawa Barat' => 'Kab. Sumbawa Barat',
-                                        'Kab. Bima' => 'Kab. Bima',
-                                        'Kota Bima' => 'Kota Bima',
-                                        'Kab. Dompu' => 'Kab. Dompu',
+                                        'kota mataram' => 'Kota Mataram',
+                                        'kab. lombok barat' => 'Kab. Lombok Barat',
+                                        'kab. lombok timur' => 'Kab. Lombok Timur',
+                                        'kab. lombok utara' => 'Kab. Lombok Utara',
+                                        'kab. lombok tengah' => 'Kab. Lombok Tengah',
+                                        'kab. sumbawa' => 'Kab. Sumbawa',
+                                        'kab. sumbawa Barat' => 'Kab. Sumbawa Barat',
+                                        'kab. bima' => 'Kab. Bima',
+                                        'kota bima' => 'Kota Bima',
+                                        'kab. dompu' => 'Kab. Dompu',
                                     ])
-                                    ->default('Kota Mataram')
+                                    ->default('kota mataram')
+                                    ->required()
                                     ->helperText('Pilih Daerah Inovator'),
                             ]),
 
@@ -188,6 +201,7 @@ class InovasiResource extends Resource
                             ->schema([
                                 Select::make('instansi_id')
                                     ->label('Instansi / Lembaga')
+                                    ->required()
                                     ->relationship('instansi', 'nama_instansi')
                                     ->searchable()
                                     ->options(function () {
@@ -197,6 +211,7 @@ class InovasiResource extends Resource
 
                                 Select::make('tipe_id')
                                     ->label('Program Inovasi')
+                                    ->required()
                                     ->relationship('tipe', 'nama_tipe')
                                     ->searchable()
                                     ->options(function () {
@@ -206,15 +221,17 @@ class InovasiResource extends Resource
 
                                 Select::make('status_inovasi')
                                     ->label('Status Inovasi')
+                                    ->required()
                                     ->options([
-                                        'Digital' => 'Digital',
-                                        'Non Digital' => 'Non Digital',
+                                        'digital' => 'Digital',
+                                        'non digital' => 'Non Digital',
                                     ])
-                                    ->default('Non Digital')
+                                    ->default('non digital')
                                     ->helperText('Pilih Status Inovasi'),
 
                                 RichEditor::make('spesifikasi_inovasi')
                                     ->label('Spesifikasi Inovasi')
+                                    ->required()
                                     ->disableToolbarButtons([
                                         'attachFiles',
                                     ])
@@ -236,24 +253,14 @@ class InovasiResource extends Resource
                                         ->maxSize(2048)
                                         ->columnSpanFull()
                                         ->moveFiles()
+                                        ->required()
                                         ->helperText('Unggah file atau dokumen PDF (Maksimal 2MB)')
                                         ->getUploadedFileNameForStorageUsing(function (UploadedFile $file)  {
                                             // Membuat nama file berdasarkan slug_inovasi dan menambahkan ekstensi file yang sesuai
-                                            return 'inovasis-' . now()->timestamp . '-' . $file->getClientOriginalName() . '.' . $file->getClientOriginalExtension();
+                                            return 'inovasis-' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
                                         })
-                                        // ->afterStateUpdated(function ($state, Set $set) {
-                                        //     if ($state instanceof UploadedFile) {
-                                        //         // Mendapatkan path dari direktori penyimpanan
-                                        //         $filePath = 'files/inovasi/' . $state->hashName();
-                            
-                                        //         // Simpan path ke field 'path_file'
-                                        //         $set('path_file', $filePath);
-                                        //     }
-                                        // })
                                         ->columnSpanFull(),
 
-                                    Hidden::make('nama_file')
-                                        ->label('Nama File'), 
                             
                                     Hidden::make('tipe_file')
                                         ->default('inovasi'),
@@ -321,9 +328,28 @@ class InovasiResource extends Resource
                 ->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('instansi_id')
+                    ->label('Instansi')
+                    ->options(fn (): array => Instansi::query()->pluck('nama_instansi', 'id')->all()),
+                SelectFilter::make('tipe_id')
+                    ->label('Jenis Program')
+                    ->options(fn (): array => Tipe::query()->pluck('nama_tipe', 'id')->all()),
+                SelectFilter::make('kategori_id')
+                    ->label('Kategori')
+                    ->options(fn (): array => Kategori::query()->where('tipe_kategori','inovasi')->pluck('nama_kategori', 'id')->all()),
+                SelectFilter::make('desiminasi_inovasi')
+                    ->options([
+                        'ya' => 'Ya',
+                        'tidak' => 'Tidak',
+                    ]),
+                SelectFilter::make('sertifikat_inovasi')
+                    ->options([
+                        'ya' => 'Ya',
+                        'tidak' => 'Tidak',
+                    ]),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
                     ->label('Hapus Inovasi')
@@ -354,7 +380,7 @@ class InovasiResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FileRelationManager::class, // Tambahkan Relation Manager di sini
         ];
     }
 
@@ -363,6 +389,7 @@ class InovasiResource extends Resource
         return [
             'index' => Pages\ListInovasis::route('/'),
             'create' => Pages\CreateInovasi::route('/create'),
+            'view' => Pages\ViewInovasi::route('/{record}'),
             'edit' => Pages\EditInovasi::route('/{record}/edit'),
         ];
     }
@@ -378,3 +405,6 @@ class InovasiResource extends Resource
         ];
     }
 }
+
+
+
