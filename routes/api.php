@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\EduwisataController;
 use App\Http\Controllers\Api\InovasiController;
 use App\Http\Controllers\Api\InstansiController;
 use App\Http\Controllers\Api\KategoriController;
+use App\Http\Controllers\Api\RisetController;
 use App\Http\Controllers\Api\TipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,10 @@ Route::get('/eduwisatas/daerah-lembaga/{label}', [EduwisataController::class, 'd
 
 // inovasi
 Route::get('/inovasis', [InovasiController::class, 'index']);
+Route::get('/inovasis/{slug}', [InovasiController::class, 'detailInovasi']);
 Route::get('/daerah-inovasi', [InovasiController::class, 'daerahInovasi']);
+
+// riset
+Route::get('/risets', [RisetController::class, 'index']);
+Route::get('/risets/{slug}', [RisetController::class, 'detailRiset']);
+Route::get('/daerah-riset', [RisetController::class, 'daerahRiset']);
