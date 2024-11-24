@@ -1,0 +1,892 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/127.0.0.1:8000"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "01c77b06-832c-4437-90de-669bd71ce660",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/kategoris",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/kategoris",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/kategoris"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Daftar Kategori\",\"data\":[{\"nama_kategori\":\"Alat\",\"slug_kategori\":\"alat\",\"tipe_kategori\":\"inovasi\"},{\"nama_kategori\":\"Pendidikan\",\"slug_kategori\":\"pendidikan\",\"tipe_kategori\":\"riset\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/kategoris\/{tipe}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/kategoris\/:tipe",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/kategoris\/:tipe",
+                            "variable": [
+                                {
+                                    "id": "tipe",
+                                    "key": "tipe",
+                                    "value": "alat",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 400,
+                            "body": "{\"success\":false,\"message\":\"Tipe kategori tidak valid. Hanya diperbolehkan inovasi atau riset.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/instansis",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/instansis",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/instansis"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Daftar Instansi\",\"data\":[{\"nama_instansi\":\"Badan Riset dan Inovasi Daerah NTB\",\"slug_instansi\":\"badan-riset-dan-inovasi-daerah-ntb\",\"alamat_instansi\":\"Jalan Raya Zamia, No.2 Desa Lelede, Lombok Barat, Nusa Tenggara Barat\"},{\"nama_instansi\":\"Badan Pengelolaan Pendapatan Daerah Provinsi NTB\",\"slug_instansi\":\"badan-pengelolaan-pendapatan-daerah-provinsi-ntb\",\"alamat_instansi\":\"Jl. Majapahit No.17, Kekalik Jaya, Kec. Sekarbela, Kota Mataram, Nusa Tenggara Bar. 83115\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/instansis\/{slug}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/instansis\/:slug",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/instansis\/:slug",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "badan-riset-dan-inovasi-daerah-ntb",
+                                    "description": "The slug of the instansi."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Detail Instansi\",\"data\":{\"nama_instansi\":\"Badan Riset dan Inovasi Daerah NTB\",\"slug_instansi\":\"badan-riset-dan-inovasi-daerah-ntb\",\"alamat_instansi\":\"Jalan Raya Zamia, No.2 Desa Lelede, Lombok Barat, Nusa Tenggara Barat\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/jenis-programs",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/jenis-programs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/jenis-programs"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Daftar Program\",\"data\":[{\"nama_tipe\":\"Innovative Government Award\",\"slug_tipe\":\"innovative-government-award\",\"deskripsi_tipe\":\"Innovative Government Award (IGA) merupakan penghargaan tahunan dari Kemendagri kepada Pemerintah Daerah atas semangat dan keberhasilannya melakukan inovasi di bidang peningkatan layanan publik, tata kelola pemerintahan dan pembangunan.\"},{\"nama_tipe\":\"Gelar Teknologi Tepat Guna\",\"slug_tipe\":\"gelar-teknologi-tepat-guna\",\"deskripsi_tipe\":\"Gelar Teknologi Tepat Guna (TTG) adalah acara tahunan yang diselenggarakan untuk mempromosikan dan berbagi informasi terkait inovasi teknologi tepat guna dari seluruh provinsi di Indonesia\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/eduwisatas",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/eduwisatas",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/eduwisatas"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Data Eduwisata berdasarkan Daerah NTB dan Luar NTB\",\"data\":{\"total_peserta_ntb\":\"120\",\"total_peserta_luar_ntb\":0,\"total_lembaga_ntb\":1,\"total_lembaga_luar_ntb\":0}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/eduwisatas\/daerah-eduwisata",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/eduwisatas\/daerah-eduwisata",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/eduwisatas\/daerah-eduwisata"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"data\":[{\"value\":\"kota_mataram\",\"label\":\"Kota Mataram\"},{\"value\":\"kab_lombok_barat\",\"label\":\"Kabupaten Lombok Barat\"},{\"value\":\"kab_lombok_timur\",\"label\":\"Kabupaten Lombok Timur\"},{\"value\":\"kab_lombok_utara\",\"label\":\"Kabupaten Lombok Utara\"},{\"value\":\"kab_lombok_tengah\",\"label\":\"Kabupaten Lombok Tengah\"},{\"value\":\"kab_sumbawa\",\"label\":\"Kabupaten Sumbawa\"},{\"value\":\"kab_sumbawa_barat\",\"label\":\"Kabupaten Sumbawa Barat\"},{\"value\":\"kab_bima\",\"label\":\"Kabupaten Bima\"},{\"value\":\"kota_bima\",\"label\":\"Kota Bima\"},{\"value\":\"kab_dompu\",\"label\":\"Kabupaten Dompu\"},{\"value\":\"aceh\",\"label\":\"Aceh\"},{\"value\":\"bali\",\"label\":\"Bali\"},{\"value\":\"banten\",\"label\":\"Banten\"},{\"value\":\"bengkulu\",\"label\":\"Bengkulu\"},{\"value\":\"yogyakarta\",\"label\":\"Daerah Istimewa Yogyakarta\"},{\"value\":\"jakarta\",\"label\":\"Daerah Khusus Ibukota Jakarta\"},{\"value\":\"gorontalo\",\"label\":\"Gorontalo\"},{\"value\":\"jambi\",\"label\":\"Jambi\"},{\"value\":\"jawa_barat\",\"label\":\"Jawa Barat\"},{\"value\":\"jawa_tengah\",\"label\":\"Jawa Tengah\"},{\"value\":\"jawa_timur\",\"label\":\"Jawa Timur\"},{\"value\":\"kalimantan_barat\",\"label\":\"Kalimantan Barat\"},{\"value\":\"kalimantan_selatan\",\"label\":\"Kalimantan Selatan\"},{\"value\":\"kalimantan_tengah\",\"label\":\"Kalimantan Tengah\"},{\"value\":\"kalimantan_timur\",\"label\":\"Kalimantan Timur\"},{\"value\":\"kalimantan_utara\",\"label\":\"Kalimantan Utara\"},{\"value\":\"bangka_belitung\",\"label\":\"Kepulauan Bangka Belitung\"},{\"value\":\"riau\",\"label\":\"Riau\"},{\"value\":\"lampung\",\"label\":\"Lampung\"},{\"value\":\"maluku\",\"label\":\"Maluku\"},{\"value\":\"maluku_utara\",\"label\":\"Maluku Utara\"},{\"value\":\"ntt\",\"label\":\"Nusa Tenggara Timur\"},{\"value\":\"papua\",\"label\":\"Papua\"},{\"value\":\"papua_barat\",\"label\":\"Papua Barat\"},{\"value\":\"papua_barat_daya\",\"label\":\"Papua Barat Daya\"},{\"value\":\"papua_pegunungan\",\"label\":\"Papua Pegunungan\"},{\"value\":\"papua_selatan\",\"label\":\"Papua Selatan\"},{\"value\":\"papua_tengah\",\"label\":\"Papua Tengah\"},{\"value\":\"sulawesi_barat\",\"label\":\"Sulawesi Barat\"},{\"value\":\"sulawesi_selatan\",\"label\":\"Sulawesi Selatan\"},{\"value\":\"sulawesi_tengah\",\"label\":\"Sulawesi Tengah\"},{\"value\":\"sulawesi_tenggara\",\"label\":\"Sulawesi Tenggara\"},{\"value\":\"sulawesi_utara\",\"label\":\"Sulawesi Utara\"},{\"value\":\"sumatera_barat\",\"label\":\"Sumatera Barat\"},{\"value\":\"sumatera_selatan\",\"label\":\"Sumatera Selatan\"},{\"value\":\"sumatera_utara\",\"label\":\"Sumatera Utara\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/eduwisatas\/asal-lembaga",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/eduwisatas\/asal-lembaga",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/eduwisatas\/asal-lembaga"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Data Eduwisata Sesuai Asal Lembaga\",\"data\":[{\"kategori\":\"paud\",\"label\":\"PAUD (Pendidikan Anak Usia Dini)\",\"total\":\"120\"},{\"kategori\":\"tk\",\"label\":\"TK (Taman Kanak-Kanak)\",\"total\":0},{\"kategori\":\"sd\",\"label\":\"SD (Sekolah Dasar)\",\"total\":0},{\"kategori\":\"smp\",\"label\":\"SMP (Sekolah Menengah Pertama)\",\"total\":0},{\"kategori\":\"mts\",\"label\":\"MTS (Madrasah Tsanawiyah)\",\"total\":0},{\"kategori\":\"sma\",\"label\":\"SMA (Sekolah Menengah Atas)\",\"total\":0},{\"kategori\":\"ma\",\"label\":\"MA (Madrasah Aliyah)\",\"total\":0},{\"kategori\":\"smk\",\"label\":\"SMK (Sekolah Menengah Kejuruan)\",\"total\":0},{\"kategori\":\"slb\",\"label\":\"SLB (Sekolah Luar Biasa)\",\"total\":0},{\"kategori\":\"perguruan_tinggi\",\"label\":\"Perguruan Tinggi (Universitas\\\/Politeknik)\",\"total\":0},{\"kategori\":\"instansi\",\"label\":\"Instansi (Lembaga Pemerintahan atau Swasta)\",\"total\":0},{\"kategori\":\"lainnya\",\"label\":\"Lainnya\",\"total\":0}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/eduwisatas\/asal-lembaga\/{label}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/eduwisatas\/asal-lembaga\/:label",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/eduwisatas\/asal-lembaga\/:label",
+                            "variable": [
+                                {
+                                    "id": "label",
+                                    "key": "label",
+                                    "value": "consectetur",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"success\":false,\"message\":\"Asal lembaga tidak valid\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/eduwisatas\/daerah-lembaga",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/eduwisatas\/daerah-lembaga",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/eduwisatas\/daerah-lembaga"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Data Eduwisata Sesuai Daerah Lembaga\",\"data\":{\"ntb\":[{\"kategori\":\"kota_mataram\",\"label\":\"Kota Mataram\",\"total\":\"120\"},{\"kategori\":\"kab_lombok_barat\",\"label\":\"Kab. Lombok Barat\",\"total\":0},{\"kategori\":\"kab_lombok_timur\",\"label\":\"Kab. Lombok Timur\",\"total\":0},{\"kategori\":\"kab_lombok_utara\",\"label\":\"Kab. Lombok Utara\",\"total\":0},{\"kategori\":\"kab_lombok_tengah\",\"label\":\"Kab. Lombok Tengah\",\"total\":0},{\"kategori\":\"kab_sumbawa\",\"label\":\"Kab. Sumbawa\",\"total\":0},{\"kategori\":\"kab_sumbawa_barat\",\"label\":\"Kab. Sumbawa Barat\",\"total\":0},{\"kategori\":\"kab_bima\",\"label\":\"Kab. Bima\",\"total\":0},{\"kategori\":\"kota_bima\",\"label\":\"Kota Bima\",\"total\":0},{\"kategori\":\"kab_dompu\",\"label\":\"Kab. Dompu\",\"total\":0}],\"selain_ntb\":[{\"kategori\":\"aceh\",\"label\":\"Aceh\",\"total\":0},{\"kategori\":\"bali\",\"label\":\"Bali\",\"total\":0},{\"kategori\":\"banten\",\"label\":\"Banten\",\"total\":0},{\"kategori\":\"bengkulu\",\"label\":\"Bengkulu\",\"total\":0},{\"kategori\":\"yogyakarta\",\"label\":\"Daerah Istimewa Yogyakarta\",\"total\":0},{\"kategori\":\"jakarta\",\"label\":\"Daerah Khusus Ibukota Jakarta\",\"total\":0},{\"kategori\":\"gorontalo\",\"label\":\"Gorontalo\",\"total\":0},{\"kategori\":\"jambi\",\"label\":\"Jambi\",\"total\":0},{\"kategori\":\"jawa_barat\",\"label\":\"Jawa Barat\",\"total\":0},{\"kategori\":\"jawa_tengah\",\"label\":\"Jawa Tengah\",\"total\":0},{\"kategori\":\"jawa_timur\",\"label\":\"Jawa Timur\",\"total\":0},{\"kategori\":\"kalimantan_barat\",\"label\":\"Kalimantan Barat\",\"total\":0},{\"kategori\":\"kalimantan_selatan\",\"label\":\"Kalimantan Selatan\",\"total\":0},{\"kategori\":\"kalimantan_tengah\",\"label\":\"Kalimantan Tengah\",\"total\":0},{\"kategori\":\"kalimantan_timur\",\"label\":\"Kalimantan Timur\",\"total\":0},{\"kategori\":\"kalimantan_utara\",\"label\":\"Kalimantan Utara\",\"total\":0},{\"kategori\":\"bangka_belitung\",\"label\":\"Kepulauan Bangka Belitung\",\"total\":0},{\"kategori\":\"riau\",\"label\":\"Riau\",\"total\":0},{\"kategori\":\"lampung\",\"label\":\"Lampung\",\"total\":0},{\"kategori\":\"maluku\",\"label\":\"Maluku\",\"total\":0},{\"kategori\":\"maluku_utara\",\"label\":\"Maluku Utara\",\"total\":0},{\"kategori\":\"ntt\",\"label\":\"Nusa Tenggara Timur\",\"total\":0},{\"kategori\":\"papua\",\"label\":\"Papua\",\"total\":0},{\"kategori\":\"papua_barat\",\"label\":\"Papua Barat\",\"total\":0},{\"kategori\":\"papua_barat_daya\",\"label\":\"Papua Barat Daya\",\"total\":0},{\"kategori\":\"papua_pegunungan\",\"label\":\"Papua Pegunungan\",\"total\":0},{\"kategori\":\"papua_selatan\",\"label\":\"Papua Selatan\",\"total\":0},{\"kategori\":\"papua_tengah\",\"label\":\"Papua Tengah\",\"total\":0},{\"kategori\":\"sulawesi_barat\",\"label\":\"Sulawesi Barat\",\"total\":0},{\"kategori\":\"sulawesi_selatan\",\"label\":\"Sulawesi Selatan\",\"total\":0},{\"kategori\":\"sulawesi_tengah\",\"label\":\"Sulawesi Tengah\",\"total\":0},{\"kategori\":\"sulawesi_tenggara\",\"label\":\"Sulawesi Tenggara\",\"total\":0},{\"kategori\":\"sulawesi_utara\",\"label\":\"Sulawesi Utara\",\"total\":0},{\"kategori\":\"sumatera_barat\",\"label\":\"Sumatera Barat\",\"total\":0},{\"kategori\":\"sumatera_selatan\",\"label\":\"Sumatera Selatan\",\"total\":0},{\"kategori\":\"sumatera_utara\",\"label\":\"Sumatera Utara\",\"total\":0}]}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/eduwisatas\/daerah-lembaga\/{label}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/eduwisatas\/daerah-lembaga\/:label",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/eduwisatas\/daerah-lembaga\/:label",
+                            "variable": [
+                                {
+                                    "id": "label",
+                                    "key": "label",
+                                    "value": "illum",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"success\":false,\"message\":\"Daerah lembaga tidak valid\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/inovasis",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/inovasis",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/inovasis"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Daftar Inovasi\",\"data\":[{\"nama_inovasi\":\"Mesin Pencabut Uang\",\"slug_inovasi\":\"mesin-pencabut-uang\",\"nama_kategori\":\"Alat\",\"tahun_inovasi\":\"2024\",\"fungsi_inovasi\":\"Mesin Pencabut Uang\",\"nama_inovator\":\"Agil\",\"daerah_inovator\":\"Kota Mataram\",\"status_inovasi\":\"Non Digital\",\"nama_program\":\"Gelar Teknologi Tepat Guna\",\"nama_instansi\":\"Badan Riset dan Inovasi Daerah NTB\"}],\"meta\":{\"current_page\":1,\"per_page\":10,\"total\":1,\"last_page\":1}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/inovasis\/{slug}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/inovasis\/:slug",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/inovasis\/:slug",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "mesin-pencabut-uang",
+                                    "description": "The slug of the inovasi."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Detail Inovasi Mesin Pencabut Uang\",\"data\":{\"nama_inovasi\":\"Mesin Pencabut Uang\",\"slug_inovasi\":\"mesin-pencabut-uang\",\"nama_kategori\":\"Alat\",\"tahun_inovasi\":\"2024\",\"fungsi_inovasi\":\"Mesin Pencabut Uang\",\"nama_inovator\":\"Agil\",\"kontak_inovator\":\"+62878708716802\",\"alamat_inovator\":\"Mesin Pencabut Uang\",\"daerah_inovator\":\"Kota Mataram\",\"status_inovasi\":\"Non Digital\",\"nama_program\":\"Gelar Teknologi Tepat Guna\",\"nama_instansi\":\"Badan Riset dan Inovasi Daerah NTB\",\"spesifikasi_inovasi\":\"<p>Mesin Pencabut Uang<\\\/p>\",\"sertifikat_inovasi\":\"tidak\",\"desiminasi_inovasi\":\"tidak\",\"file\":{\"nama_file\":\"Mesin Pencabut Uang\",\"path_file\":\"http:\\\/\\\/127.0.0.1:8000\\\/storage\\\/files\\\/inovasi\\\/inovasis-dokumen-pendukung-mesin-pencabut-bulu-ayam.pdf\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/daerah-inovasi",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/daerah-inovasi",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/daerah-inovasi"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"data\":[{\"value\":\"kota_mataram\",\"label\":\"Kota Mataram\"},{\"value\":\"kab_lombok_barat\",\"label\":\"Kabupaten Lombok Barat\"},{\"value\":\"kab_lombok_timur\",\"label\":\"Kabupaten Lombok Timur\"},{\"value\":\"kab_lombok_utara\",\"label\":\"Kabupaten Lombok Utara\"},{\"value\":\"kab_lombok_tengah\",\"label\":\"Kabupaten Lombok Tengah\"},{\"value\":\"kab_sumbawa\",\"label\":\"Kabupaten Sumbawa\"},{\"value\":\"kab_sumbawa_barat\",\"label\":\"Kabupaten Sumbawa Barat\"},{\"value\":\"kab_bima\",\"label\":\"Kabupaten Bima\"},{\"value\":\"kota_bima\",\"label\":\"Kota Bima\"},{\"value\":\"kab_dompu\",\"label\":\"Kabupaten Dompu\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/risets",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risets"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Daftar Riset\",\"data\":[{\"judul_riset\":\"Masukan Utang\",\"slug_riset\":\"masukan-utang\",\"nama_kategori\":\"Pendidikan\",\"tahun_riset\":\"2024\",\"nama_peneliti\":\"Agil\",\"daerah_peneliti\":\"Kota Mataram\",\"nama_instansi\":\"Badan Riset dan Inovasi Daerah NTB\"}],\"meta\":{\"current_page\":1,\"per_page\":10,\"total\":1,\"last_page\":1}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/risets\/{slug}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risets\/:slug",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risets\/:slug",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "masukan-utang",
+                                    "description": "The slug of the riset."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"message\":\"Detail riset \",\"data\":{\"judul_riset\":\"Masukan Utang\",\"slug_riset\":\"masukan-utang\",\"nama_kategori\":\"Pendidikan\",\"tahun_riset\":\"2024\",\"deskripsi_riset\":\"<p>Masukan Utang<\\\/p>\",\"nama_peneliti\":\"Agil\",\"kontak_peneliti\":\"+62878787131\",\"alamat_peneliti\":\"Masukan Utang\",\"daerah_peneliti\":\"Kota Mataram\",\"nama_instansi\":\"Badan Riset dan Inovasi Daerah NTB\",\"desiminasi_riset\":\"tidak\",\"file\":[{\"nama_file\":\"Masukan Utang\",\"path_file\":\"http:\\\/\\\/127.0.0.1:8000\\\/storage\\\/files\\\/riset\\\/riset-dokumen-pendukung-mesin-pencabut-bulu-ayam.pdf\"},{\"nama_file\":\"Masukan Utang 2\",\"path_file\":\"http:\\\/\\\/127.0.0.1:8000\\\/storage\\\/files\\\/riset\\\/riset-data-akun-credential-salva-inti-property.pdf\"}]}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/daerah-riset",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/daerah-riset",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/daerah-riset"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"success\":true,\"data\":[{\"value\":\"kota_mataram\",\"label\":\"Kota Mataram\"},{\"value\":\"kab_lombok_barat\",\"label\":\"Kabupaten Lombok Barat\"},{\"value\":\"kab_lombok_timur\",\"label\":\"Kabupaten Lombok Timur\"},{\"value\":\"kab_lombok_utara\",\"label\":\"Kabupaten Lombok Utara\"},{\"value\":\"kab_lombok_tengah\",\"label\":\"Kabupaten Lombok Tengah\"},{\"value\":\"kab_sumbawa\",\"label\":\"Kabupaten Sumbawa\"},{\"value\":\"kab_sumbawa_barat\",\"label\":\"Kabupaten Sumbawa Barat\"},{\"value\":\"kab_bima\",\"label\":\"Kabupaten Bima\"},{\"value\":\"kota_bima\",\"label\":\"Kota Bima\"},{\"value\":\"kab_dompu\",\"label\":\"Kabupaten Dompu\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

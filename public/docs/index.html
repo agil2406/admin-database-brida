@@ -1,0 +1,3060 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://127.0.0.1:8000";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.38.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.38.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-kategoris">
+                                <a href="#endpoints-GETapi-kategoris">GET api/kategoris</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-kategoris--tipe-">
+                                <a href="#endpoints-GETapi-kategoris--tipe-">GET api/kategoris/{tipe}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-instansis">
+                                <a href="#endpoints-GETapi-instansis">GET api/instansis</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-instansis--slug-">
+                                <a href="#endpoints-GETapi-instansis--slug-">GET api/instansis/{slug}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-jenis-programs">
+                                <a href="#endpoints-GETapi-jenis-programs">GET api/jenis-programs</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-eduwisatas">
+                                <a href="#endpoints-GETapi-eduwisatas">GET api/eduwisatas</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-eduwisatas-daerah-eduwisata">
+                                <a href="#endpoints-GETapi-eduwisatas-daerah-eduwisata">GET api/eduwisatas/daerah-eduwisata</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-eduwisatas-asal-lembaga">
+                                <a href="#endpoints-GETapi-eduwisatas-asal-lembaga">GET api/eduwisatas/asal-lembaga</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-eduwisatas-asal-lembaga--label-">
+                                <a href="#endpoints-GETapi-eduwisatas-asal-lembaga--label-">GET api/eduwisatas/asal-lembaga/{label}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-eduwisatas-daerah-lembaga">
+                                <a href="#endpoints-GETapi-eduwisatas-daerah-lembaga">GET api/eduwisatas/daerah-lembaga</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-eduwisatas-daerah-lembaga--label-">
+                                <a href="#endpoints-GETapi-eduwisatas-daerah-lembaga--label-">GET api/eduwisatas/daerah-lembaga/{label}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-inovasis">
+                                <a href="#endpoints-GETapi-inovasis">GET api/inovasis</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-inovasis--slug-">
+                                <a href="#endpoints-GETapi-inovasis--slug-">GET api/inovasis/{slug}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-daerah-inovasi">
+                                <a href="#endpoints-GETapi-daerah-inovasi">GET api/daerah-inovasi</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-risets">
+                                <a href="#endpoints-GETapi-risets">GET api/risets</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-risets--slug-">
+                                <a href="#endpoints-GETapi-risets--slug-">GET api/risets/{slug}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-daerah-riset">
+                                <a href="#endpoints-GETapi-daerah-riset">GET api/daerah-riset</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: November 25, 2024</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://127.0.0.1:8000</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-kategoris">GET api/kategoris</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-kategoris">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/kategoris" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/kategoris"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-kategoris">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Daftar Kategori&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;nama_kategori&quot;: &quot;Alat&quot;,
+            &quot;slug_kategori&quot;: &quot;alat&quot;,
+            &quot;tipe_kategori&quot;: &quot;inovasi&quot;
+        },
+        {
+            &quot;nama_kategori&quot;: &quot;Pendidikan&quot;,
+            &quot;slug_kategori&quot;: &quot;pendidikan&quot;,
+            &quot;tipe_kategori&quot;: &quot;riset&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-kategoris" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-kategoris"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-kategoris"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-kategoris" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-kategoris">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-kategoris" data-method="GET"
+      data-path="api/kategoris"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-kategoris', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-kategoris"
+                    onclick="tryItOut('GETapi-kategoris');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-kategoris"
+                    onclick="cancelTryOut('GETapi-kategoris');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-kategoris"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/kategoris</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-kategoris"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-kategoris"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-kategoris--tipe-">GET api/kategoris/{tipe}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-kategoris--tipe-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/kategoris/alat" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/kategoris/alat"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-kategoris--tipe-">
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Tipe kategori tidak valid. Hanya diperbolehkan inovasi atau riset.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-kategoris--tipe-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-kategoris--tipe-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-kategoris--tipe-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-kategoris--tipe-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-kategoris--tipe-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-kategoris--tipe-" data-method="GET"
+      data-path="api/kategoris/{tipe}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-kategoris--tipe-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-kategoris--tipe-"
+                    onclick="tryItOut('GETapi-kategoris--tipe-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-kategoris--tipe-"
+                    onclick="cancelTryOut('GETapi-kategoris--tipe-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-kategoris--tipe-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/kategoris/{tipe}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-kategoris--tipe-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-kategoris--tipe-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>tipe</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="tipe"                data-endpoint="GETapi-kategoris--tipe-"
+               value="alat"
+               data-component="url">
+    <br>
+<p>Example: <code>alat</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-instansis">GET api/instansis</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-instansis">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/instansis" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/instansis"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-instansis">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Daftar Instansi&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;,
+            &quot;slug_instansi&quot;: &quot;badan-riset-dan-inovasi-daerah-ntb&quot;,
+            &quot;alamat_instansi&quot;: &quot;Jalan Raya Zamia, No.2 Desa Lelede, Lombok Barat, Nusa Tenggara Barat&quot;
+        },
+        {
+            &quot;nama_instansi&quot;: &quot;Badan Pengelolaan Pendapatan Daerah Provinsi NTB&quot;,
+            &quot;slug_instansi&quot;: &quot;badan-pengelolaan-pendapatan-daerah-provinsi-ntb&quot;,
+            &quot;alamat_instansi&quot;: &quot;Jl. Majapahit No.17, Kekalik Jaya, Kec. Sekarbela, Kota Mataram, Nusa Tenggara Bar. 83115&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-instansis" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-instansis"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-instansis"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-instansis" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-instansis">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-instansis" data-method="GET"
+      data-path="api/instansis"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-instansis', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-instansis"
+                    onclick="tryItOut('GETapi-instansis');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-instansis"
+                    onclick="cancelTryOut('GETapi-instansis');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-instansis"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/instansis</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-instansis"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-instansis"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-instansis--slug-">GET api/instansis/{slug}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-instansis--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/instansis/badan-riset-dan-inovasi-daerah-ntb" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/instansis/badan-riset-dan-inovasi-daerah-ntb"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-instansis--slug-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Detail Instansi&quot;,
+    &quot;data&quot;: {
+        &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;,
+        &quot;slug_instansi&quot;: &quot;badan-riset-dan-inovasi-daerah-ntb&quot;,
+        &quot;alamat_instansi&quot;: &quot;Jalan Raya Zamia, No.2 Desa Lelede, Lombok Barat, Nusa Tenggara Barat&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-instansis--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-instansis--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-instansis--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-instansis--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-instansis--slug-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-instansis--slug-" data-method="GET"
+      data-path="api/instansis/{slug}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-instansis--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-instansis--slug-"
+                    onclick="tryItOut('GETapi-instansis--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-instansis--slug-"
+                    onclick="cancelTryOut('GETapi-instansis--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-instansis--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/instansis/{slug}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-instansis--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-instansis--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-instansis--slug-"
+               value="badan-riset-dan-inovasi-daerah-ntb"
+               data-component="url">
+    <br>
+<p>The slug of the instansi. Example: <code>badan-riset-dan-inovasi-daerah-ntb</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-jenis-programs">GET api/jenis-programs</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-jenis-programs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/jenis-programs" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/jenis-programs"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-jenis-programs">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Daftar Program&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;nama_tipe&quot;: &quot;Innovative Government Award&quot;,
+            &quot;slug_tipe&quot;: &quot;innovative-government-award&quot;,
+            &quot;deskripsi_tipe&quot;: &quot;Innovative Government Award (IGA) merupakan penghargaan tahunan dari Kemendagri kepada Pemerintah Daerah atas semangat dan keberhasilannya melakukan inovasi di bidang peningkatan layanan publik, tata kelola pemerintahan dan pembangunan.&quot;
+        },
+        {
+            &quot;nama_tipe&quot;: &quot;Gelar Teknologi Tepat Guna&quot;,
+            &quot;slug_tipe&quot;: &quot;gelar-teknologi-tepat-guna&quot;,
+            &quot;deskripsi_tipe&quot;: &quot;Gelar Teknologi Tepat Guna (TTG) adalah acara tahunan yang diselenggarakan untuk mempromosikan dan berbagi informasi terkait inovasi teknologi tepat guna dari seluruh provinsi di Indonesia&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-jenis-programs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-jenis-programs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-jenis-programs"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-jenis-programs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-jenis-programs">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-jenis-programs" data-method="GET"
+      data-path="api/jenis-programs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-jenis-programs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-jenis-programs"
+                    onclick="tryItOut('GETapi-jenis-programs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-jenis-programs"
+                    onclick="cancelTryOut('GETapi-jenis-programs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-jenis-programs"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/jenis-programs</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-jenis-programs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-jenis-programs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-eduwisatas">GET api/eduwisatas</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-eduwisatas">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/eduwisatas" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/eduwisatas"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-eduwisatas">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Data Eduwisata berdasarkan Daerah NTB dan Luar NTB&quot;,
+    &quot;data&quot;: {
+        &quot;total_peserta_ntb&quot;: &quot;120&quot;,
+        &quot;total_peserta_luar_ntb&quot;: 0,
+        &quot;total_lembaga_ntb&quot;: 1,
+        &quot;total_lembaga_luar_ntb&quot;: 0
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-eduwisatas" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-eduwisatas"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-eduwisatas"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-eduwisatas" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-eduwisatas">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-eduwisatas" data-method="GET"
+      data-path="api/eduwisatas"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-eduwisatas', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-eduwisatas"
+                    onclick="tryItOut('GETapi-eduwisatas');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-eduwisatas"
+                    onclick="cancelTryOut('GETapi-eduwisatas');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-eduwisatas"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/eduwisatas</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-eduwisatas"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-eduwisatas"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-eduwisatas-daerah-eduwisata">GET api/eduwisatas/daerah-eduwisata</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-eduwisatas-daerah-eduwisata">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/eduwisatas/daerah-eduwisata" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/eduwisatas/daerah-eduwisata"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-eduwisatas-daerah-eduwisata">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;value&quot;: &quot;kota_mataram&quot;,
+            &quot;label&quot;: &quot;Kota Mataram&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_barat&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_timur&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Timur&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_utara&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Utara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_tengah&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_sumbawa&quot;,
+            &quot;label&quot;: &quot;Kabupaten Sumbawa&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_sumbawa_barat&quot;,
+            &quot;label&quot;: &quot;Kabupaten Sumbawa Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_bima&quot;,
+            &quot;label&quot;: &quot;Kabupaten Bima&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kota_bima&quot;,
+            &quot;label&quot;: &quot;Kota Bima&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_dompu&quot;,
+            &quot;label&quot;: &quot;Kabupaten Dompu&quot;
+        },
+        {
+            &quot;value&quot;: &quot;aceh&quot;,
+            &quot;label&quot;: &quot;Aceh&quot;
+        },
+        {
+            &quot;value&quot;: &quot;bali&quot;,
+            &quot;label&quot;: &quot;Bali&quot;
+        },
+        {
+            &quot;value&quot;: &quot;banten&quot;,
+            &quot;label&quot;: &quot;Banten&quot;
+        },
+        {
+            &quot;value&quot;: &quot;bengkulu&quot;,
+            &quot;label&quot;: &quot;Bengkulu&quot;
+        },
+        {
+            &quot;value&quot;: &quot;yogyakarta&quot;,
+            &quot;label&quot;: &quot;Daerah Istimewa Yogyakarta&quot;
+        },
+        {
+            &quot;value&quot;: &quot;jakarta&quot;,
+            &quot;label&quot;: &quot;Daerah Khusus Ibukota Jakarta&quot;
+        },
+        {
+            &quot;value&quot;: &quot;gorontalo&quot;,
+            &quot;label&quot;: &quot;Gorontalo&quot;
+        },
+        {
+            &quot;value&quot;: &quot;jambi&quot;,
+            &quot;label&quot;: &quot;Jambi&quot;
+        },
+        {
+            &quot;value&quot;: &quot;jawa_barat&quot;,
+            &quot;label&quot;: &quot;Jawa Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;jawa_tengah&quot;,
+            &quot;label&quot;: &quot;Jawa Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;jawa_timur&quot;,
+            &quot;label&quot;: &quot;Jawa Timur&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kalimantan_barat&quot;,
+            &quot;label&quot;: &quot;Kalimantan Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kalimantan_selatan&quot;,
+            &quot;label&quot;: &quot;Kalimantan Selatan&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kalimantan_tengah&quot;,
+            &quot;label&quot;: &quot;Kalimantan Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kalimantan_timur&quot;,
+            &quot;label&quot;: &quot;Kalimantan Timur&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kalimantan_utara&quot;,
+            &quot;label&quot;: &quot;Kalimantan Utara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;bangka_belitung&quot;,
+            &quot;label&quot;: &quot;Kepulauan Bangka Belitung&quot;
+        },
+        {
+            &quot;value&quot;: &quot;riau&quot;,
+            &quot;label&quot;: &quot;Riau&quot;
+        },
+        {
+            &quot;value&quot;: &quot;lampung&quot;,
+            &quot;label&quot;: &quot;Lampung&quot;
+        },
+        {
+            &quot;value&quot;: &quot;maluku&quot;,
+            &quot;label&quot;: &quot;Maluku&quot;
+        },
+        {
+            &quot;value&quot;: &quot;maluku_utara&quot;,
+            &quot;label&quot;: &quot;Maluku Utara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;ntt&quot;,
+            &quot;label&quot;: &quot;Nusa Tenggara Timur&quot;
+        },
+        {
+            &quot;value&quot;: &quot;papua&quot;,
+            &quot;label&quot;: &quot;Papua&quot;
+        },
+        {
+            &quot;value&quot;: &quot;papua_barat&quot;,
+            &quot;label&quot;: &quot;Papua Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;papua_barat_daya&quot;,
+            &quot;label&quot;: &quot;Papua Barat Daya&quot;
+        },
+        {
+            &quot;value&quot;: &quot;papua_pegunungan&quot;,
+            &quot;label&quot;: &quot;Papua Pegunungan&quot;
+        },
+        {
+            &quot;value&quot;: &quot;papua_selatan&quot;,
+            &quot;label&quot;: &quot;Papua Selatan&quot;
+        },
+        {
+            &quot;value&quot;: &quot;papua_tengah&quot;,
+            &quot;label&quot;: &quot;Papua Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sulawesi_barat&quot;,
+            &quot;label&quot;: &quot;Sulawesi Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sulawesi_selatan&quot;,
+            &quot;label&quot;: &quot;Sulawesi Selatan&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sulawesi_tengah&quot;,
+            &quot;label&quot;: &quot;Sulawesi Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sulawesi_tenggara&quot;,
+            &quot;label&quot;: &quot;Sulawesi Tenggara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sulawesi_utara&quot;,
+            &quot;label&quot;: &quot;Sulawesi Utara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sumatera_barat&quot;,
+            &quot;label&quot;: &quot;Sumatera Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sumatera_selatan&quot;,
+            &quot;label&quot;: &quot;Sumatera Selatan&quot;
+        },
+        {
+            &quot;value&quot;: &quot;sumatera_utara&quot;,
+            &quot;label&quot;: &quot;Sumatera Utara&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-eduwisatas-daerah-eduwisata" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-eduwisatas-daerah-eduwisata"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-eduwisatas-daerah-eduwisata"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-eduwisatas-daerah-eduwisata" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-eduwisatas-daerah-eduwisata">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-eduwisatas-daerah-eduwisata" data-method="GET"
+      data-path="api/eduwisatas/daerah-eduwisata"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-eduwisatas-daerah-eduwisata', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-eduwisatas-daerah-eduwisata"
+                    onclick="tryItOut('GETapi-eduwisatas-daerah-eduwisata');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-eduwisatas-daerah-eduwisata"
+                    onclick="cancelTryOut('GETapi-eduwisatas-daerah-eduwisata');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-eduwisatas-daerah-eduwisata"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/eduwisatas/daerah-eduwisata</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-eduwisatas-daerah-eduwisata"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-eduwisatas-daerah-eduwisata"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-eduwisatas-asal-lembaga">GET api/eduwisatas/asal-lembaga</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-eduwisatas-asal-lembaga">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-eduwisatas-asal-lembaga">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Data Eduwisata Sesuai Asal Lembaga&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;kategori&quot;: &quot;paud&quot;,
+            &quot;label&quot;: &quot;PAUD (Pendidikan Anak Usia Dini)&quot;,
+            &quot;total&quot;: &quot;120&quot;
+        },
+        {
+            &quot;kategori&quot;: &quot;tk&quot;,
+            &quot;label&quot;: &quot;TK (Taman Kanak-Kanak)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;sd&quot;,
+            &quot;label&quot;: &quot;SD (Sekolah Dasar)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;smp&quot;,
+            &quot;label&quot;: &quot;SMP (Sekolah Menengah Pertama)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;mts&quot;,
+            &quot;label&quot;: &quot;MTS (Madrasah Tsanawiyah)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;sma&quot;,
+            &quot;label&quot;: &quot;SMA (Sekolah Menengah Atas)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;ma&quot;,
+            &quot;label&quot;: &quot;MA (Madrasah Aliyah)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;smk&quot;,
+            &quot;label&quot;: &quot;SMK (Sekolah Menengah Kejuruan)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;slb&quot;,
+            &quot;label&quot;: &quot;SLB (Sekolah Luar Biasa)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;perguruan_tinggi&quot;,
+            &quot;label&quot;: &quot;Perguruan Tinggi (Universitas/Politeknik)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;instansi&quot;,
+            &quot;label&quot;: &quot;Instansi (Lembaga Pemerintahan atau Swasta)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;lainnya&quot;,
+            &quot;label&quot;: &quot;Lainnya&quot;,
+            &quot;total&quot;: 0
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-eduwisatas-asal-lembaga" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-eduwisatas-asal-lembaga"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-eduwisatas-asal-lembaga"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-eduwisatas-asal-lembaga" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-eduwisatas-asal-lembaga">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-eduwisatas-asal-lembaga" data-method="GET"
+      data-path="api/eduwisatas/asal-lembaga"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-eduwisatas-asal-lembaga', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-eduwisatas-asal-lembaga"
+                    onclick="tryItOut('GETapi-eduwisatas-asal-lembaga');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-eduwisatas-asal-lembaga"
+                    onclick="cancelTryOut('GETapi-eduwisatas-asal-lembaga');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-eduwisatas-asal-lembaga"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/eduwisatas/asal-lembaga</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-eduwisatas-asal-lembaga"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-eduwisatas-asal-lembaga"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-eduwisatas-asal-lembaga--label-">GET api/eduwisatas/asal-lembaga/{label}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-eduwisatas-asal-lembaga--label-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga/consectetur" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga/consectetur"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-eduwisatas-asal-lembaga--label-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Asal lembaga tidak valid&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-eduwisatas-asal-lembaga--label-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-eduwisatas-asal-lembaga--label-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-eduwisatas-asal-lembaga--label-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-eduwisatas-asal-lembaga--label-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-eduwisatas-asal-lembaga--label-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-eduwisatas-asal-lembaga--label-" data-method="GET"
+      data-path="api/eduwisatas/asal-lembaga/{label}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-eduwisatas-asal-lembaga--label-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-eduwisatas-asal-lembaga--label-"
+                    onclick="tryItOut('GETapi-eduwisatas-asal-lembaga--label-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-eduwisatas-asal-lembaga--label-"
+                    onclick="cancelTryOut('GETapi-eduwisatas-asal-lembaga--label-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-eduwisatas-asal-lembaga--label-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/eduwisatas/asal-lembaga/{label}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-eduwisatas-asal-lembaga--label-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-eduwisatas-asal-lembaga--label-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="label"                data-endpoint="GETapi-eduwisatas-asal-lembaga--label-"
+               value="consectetur"
+               data-component="url">
+    <br>
+<p>Example: <code>consectetur</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-eduwisatas-daerah-lembaga">GET api/eduwisatas/daerah-lembaga</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-eduwisatas-daerah-lembaga">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-eduwisatas-daerah-lembaga">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Data Eduwisata Sesuai Daerah Lembaga&quot;,
+    &quot;data&quot;: {
+        &quot;ntb&quot;: [
+            {
+                &quot;kategori&quot;: &quot;kota_mataram&quot;,
+                &quot;label&quot;: &quot;Kota Mataram&quot;,
+                &quot;total&quot;: &quot;120&quot;
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_barat&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_timur&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_utara&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_tengah&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_sumbawa&quot;,
+                &quot;label&quot;: &quot;Kab. Sumbawa&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_sumbawa_barat&quot;,
+                &quot;label&quot;: &quot;Kab. Sumbawa Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_bima&quot;,
+                &quot;label&quot;: &quot;Kab. Bima&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kota_bima&quot;,
+                &quot;label&quot;: &quot;Kota Bima&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_dompu&quot;,
+                &quot;label&quot;: &quot;Kab. Dompu&quot;,
+                &quot;total&quot;: 0
+            }
+        ],
+        &quot;selain_ntb&quot;: [
+            {
+                &quot;kategori&quot;: &quot;aceh&quot;,
+                &quot;label&quot;: &quot;Aceh&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;bali&quot;,
+                &quot;label&quot;: &quot;Bali&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;banten&quot;,
+                &quot;label&quot;: &quot;Banten&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;bengkulu&quot;,
+                &quot;label&quot;: &quot;Bengkulu&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;yogyakarta&quot;,
+                &quot;label&quot;: &quot;Daerah Istimewa Yogyakarta&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jakarta&quot;,
+                &quot;label&quot;: &quot;Daerah Khusus Ibukota Jakarta&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;gorontalo&quot;,
+                &quot;label&quot;: &quot;Gorontalo&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jambi&quot;,
+                &quot;label&quot;: &quot;Jambi&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jawa_barat&quot;,
+                &quot;label&quot;: &quot;Jawa Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jawa_tengah&quot;,
+                &quot;label&quot;: &quot;Jawa Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jawa_timur&quot;,
+                &quot;label&quot;: &quot;Jawa Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_barat&quot;,
+                &quot;label&quot;: &quot;Kalimantan Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_selatan&quot;,
+                &quot;label&quot;: &quot;Kalimantan Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_tengah&quot;,
+                &quot;label&quot;: &quot;Kalimantan Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_timur&quot;,
+                &quot;label&quot;: &quot;Kalimantan Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_utara&quot;,
+                &quot;label&quot;: &quot;Kalimantan Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;bangka_belitung&quot;,
+                &quot;label&quot;: &quot;Kepulauan Bangka Belitung&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;riau&quot;,
+                &quot;label&quot;: &quot;Riau&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;lampung&quot;,
+                &quot;label&quot;: &quot;Lampung&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;maluku&quot;,
+                &quot;label&quot;: &quot;Maluku&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;maluku_utara&quot;,
+                &quot;label&quot;: &quot;Maluku Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;ntt&quot;,
+                &quot;label&quot;: &quot;Nusa Tenggara Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua&quot;,
+                &quot;label&quot;: &quot;Papua&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_barat&quot;,
+                &quot;label&quot;: &quot;Papua Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_barat_daya&quot;,
+                &quot;label&quot;: &quot;Papua Barat Daya&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_pegunungan&quot;,
+                &quot;label&quot;: &quot;Papua Pegunungan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_selatan&quot;,
+                &quot;label&quot;: &quot;Papua Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_tengah&quot;,
+                &quot;label&quot;: &quot;Papua Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_barat&quot;,
+                &quot;label&quot;: &quot;Sulawesi Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_selatan&quot;,
+                &quot;label&quot;: &quot;Sulawesi Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_tengah&quot;,
+                &quot;label&quot;: &quot;Sulawesi Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_tenggara&quot;,
+                &quot;label&quot;: &quot;Sulawesi Tenggara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_utara&quot;,
+                &quot;label&quot;: &quot;Sulawesi Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sumatera_barat&quot;,
+                &quot;label&quot;: &quot;Sumatera Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sumatera_selatan&quot;,
+                &quot;label&quot;: &quot;Sumatera Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sumatera_utara&quot;,
+                &quot;label&quot;: &quot;Sumatera Utara&quot;,
+                &quot;total&quot;: 0
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-eduwisatas-daerah-lembaga" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-eduwisatas-daerah-lembaga"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-eduwisatas-daerah-lembaga"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-eduwisatas-daerah-lembaga" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-eduwisatas-daerah-lembaga">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-eduwisatas-daerah-lembaga" data-method="GET"
+      data-path="api/eduwisatas/daerah-lembaga"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-eduwisatas-daerah-lembaga', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-eduwisatas-daerah-lembaga"
+                    onclick="tryItOut('GETapi-eduwisatas-daerah-lembaga');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-eduwisatas-daerah-lembaga"
+                    onclick="cancelTryOut('GETapi-eduwisatas-daerah-lembaga');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-eduwisatas-daerah-lembaga"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/eduwisatas/daerah-lembaga</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-eduwisatas-daerah-lembaga"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-eduwisatas-daerah-lembaga"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-eduwisatas-daerah-lembaga--label-">GET api/eduwisatas/daerah-lembaga/{label}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-eduwisatas-daerah-lembaga--label-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga/illum" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga/illum"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-eduwisatas-daerah-lembaga--label-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Daerah lembaga tidak valid&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-eduwisatas-daerah-lembaga--label-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-eduwisatas-daerah-lembaga--label-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-eduwisatas-daerah-lembaga--label-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-eduwisatas-daerah-lembaga--label-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-eduwisatas-daerah-lembaga--label-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-eduwisatas-daerah-lembaga--label-" data-method="GET"
+      data-path="api/eduwisatas/daerah-lembaga/{label}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-eduwisatas-daerah-lembaga--label-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-eduwisatas-daerah-lembaga--label-"
+                    onclick="tryItOut('GETapi-eduwisatas-daerah-lembaga--label-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-eduwisatas-daerah-lembaga--label-"
+                    onclick="cancelTryOut('GETapi-eduwisatas-daerah-lembaga--label-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-eduwisatas-daerah-lembaga--label-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/eduwisatas/daerah-lembaga/{label}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-eduwisatas-daerah-lembaga--label-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-eduwisatas-daerah-lembaga--label-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="label"                data-endpoint="GETapi-eduwisatas-daerah-lembaga--label-"
+               value="illum"
+               data-component="url">
+    <br>
+<p>Example: <code>illum</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-inovasis">GET api/inovasis</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-inovasis">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/inovasis" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/inovasis"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-inovasis">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Daftar Inovasi&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;nama_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+            &quot;slug_inovasi&quot;: &quot;mesin-pencabut-uang&quot;,
+            &quot;nama_kategori&quot;: &quot;Alat&quot;,
+            &quot;tahun_inovasi&quot;: &quot;2024&quot;,
+            &quot;fungsi_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+            &quot;nama_inovator&quot;: &quot;Agil&quot;,
+            &quot;daerah_inovator&quot;: &quot;Kota Mataram&quot;,
+            &quot;status_inovasi&quot;: &quot;Non Digital&quot;,
+            &quot;nama_program&quot;: &quot;Gelar Teknologi Tepat Guna&quot;,
+            &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 10,
+        &quot;total&quot;: 1,
+        &quot;last_page&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-inovasis" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-inovasis"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-inovasis"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-inovasis" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-inovasis">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-inovasis" data-method="GET"
+      data-path="api/inovasis"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-inovasis', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-inovasis"
+                    onclick="tryItOut('GETapi-inovasis');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-inovasis"
+                    onclick="cancelTryOut('GETapi-inovasis');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-inovasis"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/inovasis</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-inovasis"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-inovasis"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-inovasis--slug-">GET api/inovasis/{slug}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-inovasis--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/inovasis/mesin-pencabut-uang" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/inovasis/mesin-pencabut-uang"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-inovasis--slug-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Detail Inovasi Mesin Pencabut Uang&quot;,
+    &quot;data&quot;: {
+        &quot;nama_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+        &quot;slug_inovasi&quot;: &quot;mesin-pencabut-uang&quot;,
+        &quot;nama_kategori&quot;: &quot;Alat&quot;,
+        &quot;tahun_inovasi&quot;: &quot;2024&quot;,
+        &quot;fungsi_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+        &quot;nama_inovator&quot;: &quot;Agil&quot;,
+        &quot;kontak_inovator&quot;: &quot;+62878708716802&quot;,
+        &quot;alamat_inovator&quot;: &quot;Mesin Pencabut Uang&quot;,
+        &quot;daerah_inovator&quot;: &quot;Kota Mataram&quot;,
+        &quot;status_inovasi&quot;: &quot;Non Digital&quot;,
+        &quot;nama_program&quot;: &quot;Gelar Teknologi Tepat Guna&quot;,
+        &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;,
+        &quot;spesifikasi_inovasi&quot;: &quot;&lt;p&gt;Mesin Pencabut Uang&lt;/p&gt;&quot;,
+        &quot;sertifikat_inovasi&quot;: &quot;tidak&quot;,
+        &quot;desiminasi_inovasi&quot;: &quot;tidak&quot;,
+        &quot;file&quot;: {
+            &quot;nama_file&quot;: &quot;Mesin Pencabut Uang&quot;,
+            &quot;path_file&quot;: &quot;http://127.0.0.1:8000/storage/files/inovasi/inovasis-dokumen-pendukung-mesin-pencabut-bulu-ayam.pdf&quot;
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-inovasis--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-inovasis--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-inovasis--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-inovasis--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-inovasis--slug-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-inovasis--slug-" data-method="GET"
+      data-path="api/inovasis/{slug}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-inovasis--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-inovasis--slug-"
+                    onclick="tryItOut('GETapi-inovasis--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-inovasis--slug-"
+                    onclick="cancelTryOut('GETapi-inovasis--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-inovasis--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/inovasis/{slug}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-inovasis--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-inovasis--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-inovasis--slug-"
+               value="mesin-pencabut-uang"
+               data-component="url">
+    <br>
+<p>The slug of the inovasi. Example: <code>mesin-pencabut-uang</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-daerah-inovasi">GET api/daerah-inovasi</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-daerah-inovasi">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/daerah-inovasi" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/daerah-inovasi"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-daerah-inovasi">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;value&quot;: &quot;kota_mataram&quot;,
+            &quot;label&quot;: &quot;Kota Mataram&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_barat&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_timur&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Timur&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_utara&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Utara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_tengah&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_sumbawa&quot;,
+            &quot;label&quot;: &quot;Kabupaten Sumbawa&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_sumbawa_barat&quot;,
+            &quot;label&quot;: &quot;Kabupaten Sumbawa Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_bima&quot;,
+            &quot;label&quot;: &quot;Kabupaten Bima&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kota_bima&quot;,
+            &quot;label&quot;: &quot;Kota Bima&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_dompu&quot;,
+            &quot;label&quot;: &quot;Kabupaten Dompu&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-daerah-inovasi" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-daerah-inovasi"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-daerah-inovasi"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-daerah-inovasi" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-daerah-inovasi">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-daerah-inovasi" data-method="GET"
+      data-path="api/daerah-inovasi"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-daerah-inovasi', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-daerah-inovasi"
+                    onclick="tryItOut('GETapi-daerah-inovasi');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-daerah-inovasi"
+                    onclick="cancelTryOut('GETapi-daerah-inovasi');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-daerah-inovasi"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/daerah-inovasi</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-daerah-inovasi"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-daerah-inovasi"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-risets">GET api/risets</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-risets">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/risets" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/risets"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-risets">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Daftar Riset&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;judul_riset&quot;: &quot;Masukan Utang&quot;,
+            &quot;slug_riset&quot;: &quot;masukan-utang&quot;,
+            &quot;nama_kategori&quot;: &quot;Pendidikan&quot;,
+            &quot;tahun_riset&quot;: &quot;2024&quot;,
+            &quot;nama_peneliti&quot;: &quot;Agil&quot;,
+            &quot;daerah_peneliti&quot;: &quot;Kota Mataram&quot;,
+            &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 10,
+        &quot;total&quot;: 1,
+        &quot;last_page&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-risets" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-risets"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-risets"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-risets" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-risets">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-risets" data-method="GET"
+      data-path="api/risets"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-risets', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-risets"
+                    onclick="tryItOut('GETapi-risets');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-risets"
+                    onclick="cancelTryOut('GETapi-risets');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-risets"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/risets</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-risets"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-risets"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-risets--slug-">GET api/risets/{slug}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-risets--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/risets/masukan-utang" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/risets/masukan-utang"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-risets--slug-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Detail riset &quot;,
+    &quot;data&quot;: {
+        &quot;judul_riset&quot;: &quot;Masukan Utang&quot;,
+        &quot;slug_riset&quot;: &quot;masukan-utang&quot;,
+        &quot;nama_kategori&quot;: &quot;Pendidikan&quot;,
+        &quot;tahun_riset&quot;: &quot;2024&quot;,
+        &quot;deskripsi_riset&quot;: &quot;&lt;p&gt;Masukan Utang&lt;/p&gt;&quot;,
+        &quot;nama_peneliti&quot;: &quot;Agil&quot;,
+        &quot;kontak_peneliti&quot;: &quot;+62878787131&quot;,
+        &quot;alamat_peneliti&quot;: &quot;Masukan Utang&quot;,
+        &quot;daerah_peneliti&quot;: &quot;Kota Mataram&quot;,
+        &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;,
+        &quot;desiminasi_riset&quot;: &quot;tidak&quot;,
+        &quot;file&quot;: [
+            {
+                &quot;nama_file&quot;: &quot;Masukan Utang&quot;,
+                &quot;path_file&quot;: &quot;http://127.0.0.1:8000/storage/files/riset/riset-dokumen-pendukung-mesin-pencabut-bulu-ayam.pdf&quot;
+            },
+            {
+                &quot;nama_file&quot;: &quot;Masukan Utang 2&quot;,
+                &quot;path_file&quot;: &quot;http://127.0.0.1:8000/storage/files/riset/riset-data-akun-credential-salva-inti-property.pdf&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-risets--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-risets--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-risets--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-risets--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-risets--slug-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-risets--slug-" data-method="GET"
+      data-path="api/risets/{slug}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-risets--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-risets--slug-"
+                    onclick="tryItOut('GETapi-risets--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-risets--slug-"
+                    onclick="cancelTryOut('GETapi-risets--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-risets--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/risets/{slug}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-risets--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-risets--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-risets--slug-"
+               value="masukan-utang"
+               data-component="url">
+    <br>
+<p>The slug of the riset. Example: <code>masukan-utang</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-daerah-riset">GET api/daerah-riset</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-daerah-riset">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/daerah-riset" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/daerah-riset"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-daerah-riset">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;value&quot;: &quot;kota_mataram&quot;,
+            &quot;label&quot;: &quot;Kota Mataram&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_barat&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_timur&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Timur&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_utara&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Utara&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_lombok_tengah&quot;,
+            &quot;label&quot;: &quot;Kabupaten Lombok Tengah&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_sumbawa&quot;,
+            &quot;label&quot;: &quot;Kabupaten Sumbawa&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_sumbawa_barat&quot;,
+            &quot;label&quot;: &quot;Kabupaten Sumbawa Barat&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_bima&quot;,
+            &quot;label&quot;: &quot;Kabupaten Bima&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kota_bima&quot;,
+            &quot;label&quot;: &quot;Kota Bima&quot;
+        },
+        {
+            &quot;value&quot;: &quot;kab_dompu&quot;,
+            &quot;label&quot;: &quot;Kabupaten Dompu&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-daerah-riset" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-daerah-riset"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-daerah-riset"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-daerah-riset" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-daerah-riset">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-daerah-riset" data-method="GET"
+      data-path="api/daerah-riset"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-daerah-riset', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-daerah-riset"
+                    onclick="tryItOut('GETapi-daerah-riset');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-daerah-riset"
+                    onclick="cancelTryOut('GETapi-daerah-riset');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-daerah-riset"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/daerah-riset</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-daerah-riset"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-daerah-riset"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>
