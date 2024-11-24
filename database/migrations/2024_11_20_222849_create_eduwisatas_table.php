@@ -20,12 +20,12 @@ return new class extends Migration
 
             $table->enum('daerah_lembaga', [
                 'kota_mataram',
-                'kab_lombok barat',
-                'kab_lombok timur',
-                'kab_lombok utara',
-                'kab_lombok tengah',
+                'kab_lombok_barat',
+                'kab_lombok_timur',
+                'kab_lombok_utara',
+                'kab_lombok_tengah',
                 'kab_sumbawa',
-                'kab_sumbawa Barat',
+                'kab_sumbawa_barat',
                 'kab_bima',
                 'kota_bima',
                 'kab_dompu',

@@ -63,12 +63,12 @@ class EduwisataResource extends Resource
                     ->label('Daerah Lembaga')
                     ->options([
                         'kota_mataram' => 'Kota Mataram',
-                        'kab_lombok barat' => 'Kab. Lombok Barat',
-                        'kab_lombok timur' => 'Kab. Lombok Timur',
-                        'kab_lombok utara' => 'Kab. Lombok Utara',
-                        'kab_lombok tengah' => 'Kab. Lombok Tengah',
+                        'kab_lombok_barat' => 'Kab. Lombok Barat',
+                        'kab_lombok_timur' => 'Kab. Lombok Timur',
+                        'kab_lombok_utara' => 'Kab. Lombok Utara',
+                        'kab_lombok_tengah' => 'Kab. Lombok Tengah',
                         'kab_sumbawa' => 'Kab_Sumbawa',
-                        'kab_sumbawa Barat' => 'Kab. Sumbawa Barat',
+                        'kab_sumbawa_barat' => 'Kab. Sumbawa Barat',
                         'kab_bima' => 'Kab. Bima',
                         'kota_bima' => 'Kota Bima',
                         'kab_dompu' => 'Kab. Dompu',

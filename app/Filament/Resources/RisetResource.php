@@ -177,16 +177,16 @@ class RisetResource extends Resource
                                 Select::make('daerah_peneliti')
                                     ->label('Kota / Kabupaten Peneliti')
                                     ->options([
-                                        'kota mataram' => 'Kota Mataram',
-                                        'kab. lombok barat' => 'Kab. Lombok Barat',
-                                        'kab. lombok timur' => 'Kab. Lombok Timur',
-                                        'kab. lombok utara' => 'Kab. Lombok Utara',
-                                        'kab. lombok tengah' => 'Kab. Lombok Tengah',
-                                        'kab. sumbawa' => 'Kab. Sumbawa',
-                                        'kab. sumbawa Barat' => 'Kab. Sumbawa Barat',
-                                        'kab. bima' => 'Kab. Bima',
-                                        'kota bima' => 'Kota Bima',
-                                        'kab. dompu' => 'Kab. Dompu',
+                                        'kota_mataram' => 'Kota Mataram',
+                                        'kab_lombok_barat' => 'Kab. Lombok Barat',
+                                        'kab_lombok_timur' => 'Kab. Lombok Timur',
+                                        'kab_lombok_utara' => 'Kab. Lombok Utara',
+                                        'kab_lombok_tengah' => 'Kab. Lombok Tengah',
+                                        'kab_sumbawa' => 'Kab_Sumbawa',
+                                        'kab_sumbawa_barat' => 'Kab. Sumbawa Barat',
+                                        'kab_bima' => 'Kab. Bima',
+                                        'kota_bima' => 'Kota Bima',
+                                        'kab_dompu' => 'Kab. Dompu',
                                     ])
                                     ->default('kota mataram')
                                     ->required()

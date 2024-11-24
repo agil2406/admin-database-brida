@@ -25,16 +25,16 @@ return new class extends Migration
             $table->string('alamat_peneliti')->nullable();
             $table->string('kontak_peneliti')->nullable();
             $table->enum('daerah_peneliti', [
-                'kota mataram',
-                'kab. lombok barat',
-                'kab. lombok timur',
-                'kab. lombok utara',
-                'kab. lombok tengah',
-                'kab. sumbawa',
-                'kab. sumbawa barat',
-                'kab. bima',
-                'kota bima',
-                'kab. dompu'
+                'kota_mataram',
+                'kab_lombok_barat',
+                'kab_lombok_timur',
+                'kab_lombok_utara',
+                'kab_lombok_tengah',
+                'kab_sumbawa',
+                'kab_sumbawa_barat',
+                'kab_bima',
+                'kota_bima',
+                'kab_dompu',
             ])->nullable();
             $table->enum('desiminasi_riset', ['ya', 'tidak'])->default('tidak')->nullable();
             

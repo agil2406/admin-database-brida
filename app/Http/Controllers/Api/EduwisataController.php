@@ -13,9 +13,16 @@ class EduwisataController extends Controller
     {
         // Daftar wilayah NTB
         $ntbDaerahs = [
-            'kota_mataram', 'kab_lombok_barat', 'kab_lombok_timur', 'kab_lombok_utara', 
-            'kab_lombok_tengah', 'kab_sumbawa', 'kab_sumbawa_barat', 'kab_bima', 
-            'kota_bima', 'kab_dompu'
+            'kota_mataram',
+            'kab_lombok_barat',
+            'kab_lombok_timur',
+            'kab_lombok_utara',
+            'kab_lombok_tengah',
+            'kab_sumbawa',
+            'kab_sumbawa_barat',
+            'kab_bima',
+            'kota_bima',
+            'kab_dompu'
         ];
 
         // Menghitung total peserta di NTB
@@ -54,7 +61,7 @@ class EduwisataController extends Controller
         ], 200);
     }
 
-    public function asalLembaga ()
+    public function asalLembaga()
     {
         // Daftar kategori
         $categories = [
@@ -88,8 +95,8 @@ class EduwisataController extends Controller
             ];
         }
 
-         // Kembalikan data detail dalam JSON
-         return response()->json([
+        // Kembalikan data detail dalam JSON
+        return response()->json([
             'success' => true,
             'message' => 'Data Eduwisata Sesuai Asal Lembaga',
             'data' => $response
@@ -111,7 +118,7 @@ class EduwisataController extends Controller
             'kota_bima' => 'Kota Bima',
             'kab_dompu' => 'Kab. Dompu',
         ];
-    
+
         // Daerah di luar NTB
         $selainNTB = [
             'aceh' => 'Aceh',
@@ -152,20 +159,20 @@ class EduwisataController extends Controller
             'sumatera_selatan' => 'Sumatera Selatan',
             'sumatera_utara' => 'Sumatera Utara',
         ];
-    
+
         // Ambil total jumlah peserta berdasarkan daerah lembaga
         $countsNTB = DB::table('eduwisatas')
             ->select('daerah_lembaga', DB::raw('SUM(jumlah_peserta) as total'))
             ->whereIn('daerah_lembaga', array_keys($daerahsNTB)) // Filter untuk NTB
             ->groupBy('daerah_lembaga')
             ->pluck('total', 'daerah_lembaga');
-    
+
         $countsSelainNTB = DB::table('eduwisatas')
             ->select('daerah_lembaga', DB::raw('SUM(jumlah_peserta) as total'))
             ->whereIn('daerah_lembaga', array_keys($selainNTB)) // Filter untuk selain NTB
             ->groupBy('daerah_lembaga')
             ->pluck('total', 'daerah_lembaga');
-    
+
         // Format respons untuk NTB
         $responseNTB = [];
         foreach ($daerahsNTB as $key => $label) {
@@ -175,7 +182,7 @@ class EduwisataController extends Controller
                 'total' => $countsNTB[$key] ?? 0, // Jika tidak ada data, tampilkan 0
             ];
         }
-    
+
         // Format respons untuk selain NTB
         $responseSelainNTB = [];
         foreach ($selainNTB as $key => $label) {
@@ -185,7 +192,7 @@ class EduwisataController extends Controller
                 'total' => $countsSelainNTB[$key] ?? 0, // Jika tidak ada data, tampilkan 0
             ];
         }
-    
+
         // Kembalikan data dalam format JSON, dengan dua response terpisah
         return response()->json([
             'success' => true,
@@ -196,15 +203,81 @@ class EduwisataController extends Controller
             ],
         ], 200);
     }
-    
-    
-    public function detailDaerahLembaga ($label)
+
+
+    public function detailDaerahLembaga($label)
     {
+
+        // Daerah lembaga di NTB
+        $daerahsNTB = [
+            'kota_mataram' => 'Kota Mataram',
+            'kab_lombok_barat' => 'Kab. Lombok Barat',
+            'kab_lombok_timur' => 'Kab. Lombok Timur',
+            'kab_lombok_utara' => 'Kab. Lombok Utara',
+            'kab_lombok_tengah' => 'Kab. Lombok Tengah',
+            'kab_sumbawa' => 'Kab. Sumbawa',
+            'kab_sumbawa_barat' => 'Kab. Sumbawa Barat',
+            'kab_bima' => 'Kab. Bima',
+            'kota_bima' => 'Kota Bima',
+            'kab_dompu' => 'Kab. Dompu',
+        ];
+
+        // Daerah di luar NTB
+        $selainNTB = [
+            'aceh' => 'Aceh',
+            'bali' => 'Bali',
+            'banten' => 'Banten',
+            'bengkulu' => 'Bengkulu',
+            'yogyakarta' => 'Daerah Istimewa Yogyakarta',
+            'jakarta' => 'Daerah Khusus Ibukota Jakarta',
+            'gorontalo' => 'Gorontalo',
+            'jambi' => 'Jambi',
+            'jawa_barat' => 'Jawa Barat',
+            'jawa_tengah' => 'Jawa Tengah',
+            'jawa_timur' => 'Jawa Timur',
+            'kalimantan_barat' => 'Kalimantan Barat',
+            'kalimantan_selatan' => 'Kalimantan Selatan',
+            'kalimantan_tengah' => 'Kalimantan Tengah',
+            'kalimantan_timur' => 'Kalimantan Timur',
+            'kalimantan_utara' => 'Kalimantan Utara',
+            'bangka_belitung' => 'Kepulauan Bangka Belitung',
+            'riau' => 'Kepulauan Riau',
+            'lampung' => 'Lampung',
+            'maluku' => 'Maluku',
+            'maluku_utara' => 'Maluku Utara',
+            'ntt' => 'Nusa Tenggara Timur',
+            'papua' => 'Papua',
+            'papua_barat' => 'Papua Barat',
+            'papua_barat_daya' => 'Papua Barat Daya',
+            'papua_pegunungan' => 'Papua Pegunungan',
+            'papua_selatan' => 'Papua Selatan',
+            'papua_tengah' => 'Papua Tengah',
+            'riau' => 'Riau',
+            'sulawesi_barat' => 'Sulawesi Barat',
+            'sulawesi_selatan' => 'Sulawesi Selatan',
+            'sulawesi_tengah' => 'Sulawesi Tengah',
+            'sulawesi_tenggara' => 'Sulawesi Tenggara',
+            'sulawesi_utara' => 'Sulawesi Utara',
+            'sumatera_barat' => 'Sumatera Barat',
+            'sumatera_selatan' => 'Sumatera Selatan',
+            'sumatera_utara' => 'Sumatera Utara',
+        ];
+
+        // Gabungkan kedua array
+        $validLabels = array_merge(array_keys($daerahsNTB), array_keys($selainNTB));
+
+        // Validasi apakah $label ada di array
+        if (!in_array($label, $validLabels)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Daerah lembaga tidak valid',
+            ], 404);
+        }
 
         // Ambil data berdasarkan daerah tertentu
         $details = DB::table('eduwisatas')
             ->where('daerah_lembaga', $label) // Filter berdasarkan label daerah
-            ->get(['nama_lembaga', 'asal_lembaga', 'jumlah_peserta','jadwal_kunjungan']); // Pilih kolom yang relevan
+            ->get(['nama_lembaga', 'asal_lembaga', 'jumlah_peserta', 'jadwal_kunjungan']); // Pilih kolom yang relevan
 
         // Format tanggal jadwal kunjungan
         $formattedDetails = $details->map(function ($item) {
@@ -228,21 +301,44 @@ class EduwisataController extends Controller
             'details' => $formattedDetails,
         ];
 
-         // Kembalikan data detail dalam JSON
-         return response()->json([
+        // Kembalikan data detail dalam JSON
+        return response()->json([
             'success' => true,
             'message' => 'Data Eduwisata Detail Daerah Lembaga',
             'data' => $response
         ], 200);
     }
 
-    public function detailAsalLembaga ($label)
+    public function detailAsalLembaga($label)
     {
 
-       // Ambil data berdasarkan asal tertentu
-       $details = DB::table('eduwisatas')
-       ->where('asal_lembaga', $label) // Filter berdasarkan label asal
-       ->get(['nama_lembaga', 'daerah_lembaga', 'jumlah_peserta','jadwal_kunjungan']); // Pilih kolom yang relevan
+        // Daftar kategori
+        $categories = [
+            'paud' => 'PAUD (Pendidikan Anak Usia Dini)',
+            'tk' => 'TK (Taman Kanak-Kanak)',
+            'sd' => 'SD (Sekolah Dasar)',
+            'smp' => 'SMP (Sekolah Menengah Pertama)',
+            'mts' => 'MTS (Madrasah Tsanawiyah)',
+            'sma' => 'SMA (Sekolah Menengah Atas)',
+            'ma' => 'MA (Madrasah Aliyah)',
+            'smk' => 'SMK (Sekolah Menengah Kejuruan)',
+            'slb' => 'SLB (Sekolah Luar Biasa)',
+            'perguruan_tinggi' => 'Perguruan Tinggi (Universitas/Politeknik)',
+            'instansi' => 'Instansi (Lembaga Pemerintahan atau Swasta)',
+            'lainnya' => 'Lainnya',
+        ];
+        // Validasi apakah $label ada di array
+        if (!in_array($label, array_keys($categories))) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Asal lembaga tidak valid',
+            ], 404);
+        }
+
+        // Ambil data berdasarkan asal tertentu
+        $details = DB::table('eduwisatas')
+            ->where('asal_lembaga', $label) // Filter berdasarkan label asal
+            ->get(['nama_lembaga', 'daerah_lembaga', 'jumlah_peserta', 'jadwal_kunjungan']); // Pilih kolom yang relevan
 
         // Format tanggal jadwal kunjungan
         $formattedDetails = $details->map(function ($item) {
@@ -259,18 +355,83 @@ class EduwisataController extends Controller
             ->where('asal_lembaga', $label)
             ->sum('jumlah_peserta');
 
-         // Format respons
-         $response = [
+        // Format respons
+        $response = [
             'asal_lembaga' => $label,
             'total_peserta' => $total,
             'details' => $formattedDetails,
         ];
 
-         // Kembalikan data detail dalam JSON
-         return response()->json([
+        // Kembalikan data detail dalam JSON
+        return response()->json([
             'success' => true,
             'message' => 'Data Eduwisata Detail Asal Lembaga',
             'data' => $response
+        ], 200);
+    }
+
+    public function daerahEduwisata()
+    {
+
+        $daerah = [
+            'kota_mataram' => 'Kota Mataram',
+            'kab_lombok_barat' => 'Kabupaten Lombok Barat',
+            'kab_lombok_timur' => 'Kabupaten Lombok Timur',
+            'kab_lombok_utara' => 'Kabupaten Lombok Utara',
+            'kab_lombok_tengah' => 'Kabupaten Lombok Tengah',
+            'kab_sumbawa' => 'Kabupaten Sumbawa',
+            'kab_sumbawa_barat' => 'Kabupaten Sumbawa Barat',
+            'kab_bima' => 'Kabupaten Bima',
+            'kota_bima' => 'Kota Bima',
+            'kab_dompu' => 'Kabupaten Dompu',
+            'aceh' => 'Aceh',
+            'bali' => 'Bali',
+            'banten' => 'Banten',
+            'bengkulu' => 'Bengkulu',
+            'yogyakarta' => 'Daerah Istimewa Yogyakarta',
+            'jakarta' => 'Daerah Khusus Ibukota Jakarta',
+            'gorontalo' => 'Gorontalo',
+            'jambi' => 'Jambi',
+            'jawa_barat' => 'Jawa Barat',
+            'jawa_tengah' => 'Jawa Tengah',
+            'jawa_timur' => 'Jawa Timur',
+            'kalimantan_barat' => 'Kalimantan Barat',
+            'kalimantan_selatan' => 'Kalimantan Selatan',
+            'kalimantan_tengah' => 'Kalimantan Tengah',
+            'kalimantan_timur' => 'Kalimantan Timur',
+            'kalimantan_utara' => 'Kalimantan Utara',
+            'bangka_belitung' => 'Kepulauan Bangka Belitung',
+            'riau' => 'Kepulauan Riau',
+            'lampung' => 'Lampung',
+            'maluku' => 'Maluku',
+            'maluku_utara' => 'Maluku Utara',
+            'ntt' => 'Nusa Tenggara Timur',
+            'papua' => 'Papua',
+            'papua_barat' => 'Papua Barat',
+            'papua_barat_daya' => 'Papua Barat Daya',
+            'papua_pegunungan' => 'Papua Pegunungan',
+            'papua_selatan' => 'Papua Selatan',
+            'papua_tengah' => 'Papua Tengah',
+            'riau' => 'Riau',
+            'sulawesi_barat' => 'Sulawesi Barat',
+            'sulawesi_selatan' => 'Sulawesi Selatan',
+            'sulawesi_tengah' => 'Sulawesi Tengah',
+            'sulawesi_tenggara' => 'Sulawesi Tenggara',
+            'sulawesi_utara' => 'Sulawesi Utara',
+            'sumatera_barat' => 'Sumatera Barat',
+            'sumatera_selatan' => 'Sumatera Selatan',
+            'sumatera_utara' => 'Sumatera Utara',
+        ];
+
+        // Menyesuaikan format data menjadi array dengan value dan label
+        $formattedDaerah = array_map(function ($label, $value) {
+            return ['value' => $value, 'label' => $label];
+        }, $daerah, array_keys($daerah));
+
+        // Return response dengan array kota/kabupaten dan provinsi
+        return response()->json([
+            'success' => true,
+            'data' => $formattedDaerah
         ], 200);
     }
 }

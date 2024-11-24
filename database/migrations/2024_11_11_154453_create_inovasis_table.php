@@ -29,19 +29,19 @@ return new class extends Migration
             $table->string('kontak_inovator')->nullable();
             $table->string('alamat_inovator')->nullable();
             $table->enum('daerah_inovator', [
-                'kota mataram',
-                'kab. lombok barat',
-                'kab. lombok timur',
-                'kab. lombok utara',
-                'kab. lombok tengah',
-                'kab. sumbawa',
-                'kab. sumbawa barat',
-                'kab. bima',
-                'kota bima',
-                'kab. dompu'
+                'kota_mataram',
+                'kab_lombok_barat',
+                'kab_lombok_timur',
+                'kab_lombok_utara',
+                'kab_lombok_tengah',
+                'kab_sumbawa',
+                'kab_sumbawa_barat',
+                'kab_bima',
+                'kota_bima',
+                'kab_dompu',
             ])->nullable();
            
-            $table->enum('status_inovasi', ['digital', 'non digital'])->default('Non digital')->nullable();
+            $table->enum('status_inovasi', ['digital', 'non_digital'])->default('non_digital')->nullable();
 
             $table->unsignedBigInteger('tipe_id')->nullable();
             $table->foreign('tipe_id')->references('id')->on('tipes')->onDelete('set null');
