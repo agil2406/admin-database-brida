@@ -25,10 +25,6 @@ class FilesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-            TextInput::make('nama_file')
-                ->label('Nama File')
-                ->columnSpanFull()
-                ->required(),
             FileUpload::make('path_file')
                 ->label('Upload File')
                 ->disk('public')
@@ -62,7 +58,7 @@ class FilesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('Files')
             ->columns([
-            Tables\Columns\TextColumn::make('nama_file')
+            Tables\Columns\TextColumn::make('risets.judul_riset')
                 ->label('Nama File')
                 ->sortable()
                 ->searchable(),

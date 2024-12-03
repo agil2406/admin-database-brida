@@ -53,6 +53,8 @@ class InovasiResource extends Resource
 
     protected static ?string $label = 'Inovasi';
 
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -185,7 +187,7 @@ class InovasiResource extends Resource
                                         'kab_lombok_timur' => 'Kab. Lombok Timur',
                                         'kab_lombok_utara' => 'Kab. Lombok Utara',
                                         'kab_lombok_tengah' => 'Kab. Lombok Tengah',
-                                        'kab_sumbawa' => 'Kab_Sumbawa',
+                                        'kab_sumbawa' => 'Kab Sumbawa',
                                         'kab_sumbawa_barat' => 'Kab. Sumbawa Barat',
                                         'kab_bima' => 'Kab. Bima',
                                         'kota_bima' => 'Kota Bima',

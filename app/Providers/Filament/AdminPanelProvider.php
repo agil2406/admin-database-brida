@@ -59,14 +59,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->sidebarCollapsibleOnDesktop()
             ->brandName('Database BRIDA NTB')
-            // ->brandLogo(asset('images/logopemprov.png'))
             ->favicon(asset('images/logopemprov.png'))
             ->spa();
-            // ->navigationGroups([
-            //     NavigationGroup::make()
-            //          ->label('Master Data')
-            //          ->icon('heroicon-o-server-stack')
-            //          ->collapsible(false),
-            // ]);
+
     }
 }
