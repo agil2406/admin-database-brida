@@ -137,7 +137,16 @@ class InovasiResource extends Resource
                                     }),
 
                                 Select::make('sertifikat_inovasi')
-                                    ->label('Apakah Inovasi Sudah Memiliki Sertifikat ?')
+                                    ->label('Apakah Inovasi Sudah Dilakukan Sertifikasi ?')
+                                    ->options([
+                                        'ya' => 'Ya',
+                                        'tidak' => 'Tidak',
+                                    ])
+                                    ->required()
+                                    ->default('tidak'),
+
+                                Select::make('haki_inovasi')
+                                    ->label('Apakah Inovasi Sudah Memiliki HAKI / PATEN ?')
                                     ->options([
                                         'ya' => 'Ya',
                                         'tidak' => 'Tidak',
