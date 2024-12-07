@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "^3.2",
+        "flowframe/laravel-trend": "^0.3.0",
         "joaopaulolndev/filament-pdf-viewer": "^1.0",
         "knuckleswtf/scribe": "^4.38",
         "laravel/framework": "^11.9",

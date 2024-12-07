@@ -27,13 +27,13 @@ use Illuminate\Support\Str;
 class EduwisataResource extends Resource
 {
     protected static ?string $model = Eduwisata::class;
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
 
     protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationLabel = 'Eduwisata';
-    
+
     protected static ?string $heading = 'Eduwisata';
 
     protected static ?string $title = 'Eduwisata';
@@ -45,17 +45,17 @@ class EduwisataResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nama_lembaga')
-                ->label('Nama Lembaga')
-                ->live(onBlur: true)
-                ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
-                    if (($get('slug_lembaga') ?? '') !== Str::slug($old)) {
-                        return;
-                    }
-                    $set('slug_lembaga', Str::slug($state));
-                })
-                ->required()
-                ->columnSpanFull(),
-        
+                    ->label('Nama Lembaga')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
+                        if (($get('slug_lembaga') ?? '') !== Str::slug($old)) {
+                            return;
+                        }
+                        $set('slug_lembaga', Str::slug($state));
+                    })
+                    ->required()
+                    ->columnSpanFull(),
+
                 Hidden::make('slug_lembaga')
                     ->label('Slug Lembaga'),
 
@@ -113,7 +113,7 @@ class EduwisataResource extends Resource
                     ->default('kota mataram')
                     ->required()
                     ->helperText('Pilih Daerah Inovator'),
-                
+
                 DatePicker::make('jadwal_kunjungan')
                     ->label('Jadwal Kunjungan')
                     ->required()
@@ -141,13 +141,44 @@ class EduwisataResource extends Resource
                     ->default('paud') // Default value bisa diubah jika perlu
                     ->columnSpanFull(),  // Agar seleksi penuh
 
+                    TextInput::make('jumlah_laki')
+                    ->label('Jumlah Peserta Laki-Laki')
+                    ->numeric()
+                    ->minValue(1)
+                    ->required()
+                    ->helperText('Masukkan Jumlah Peserta Laki-Laki')
+                    ->reactive() // Agar perubahan nilai langsung terdeteksi
+                    ->debounce(300) // Tambahkan debounce untuk menghindari delay saat mengetik cepat
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        // Ambil nilai jumlah_perempuan dan hitung jumlah_peserta
+                        $jumlahPerempuan = $get('jumlah_perempuan');
+                        $set('jumlah_peserta', ($state ?? 0) + ($jumlahPerempuan ?? 0));
+                    })
+                    ->columnSpanFull(),
+                
+                TextInput::make('jumlah_perempuan')
+                    ->label('Jumlah Peserta Perempuan')
+                    ->numeric()
+                    ->minValue(1)
+                    ->required()
+                    ->helperText('Masukkan Jumlah Peserta Perempuan')
+                    ->reactive() // Agar perubahan nilai langsung terdeteksi
+                    ->debounce(300) // Tambahkan debounce untuk menghindari delay saat mengetik cepat
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        // Ambil nilai jumlah_laki dan hitung jumlah_peserta
+                        $jumlahLaki = $get('jumlah_laki');
+                        $set('jumlah_peserta', ($state ?? 0) + ($jumlahLaki ?? 0));
+                    })
+                    ->columnSpanFull(),
+                
                 TextInput::make('jumlah_peserta')
                     ->label('Jumlah Peserta')
                     ->numeric()
-                    ->minValue(1) // Set the minimum value for jumlah peserta
-                    ->required()
-                    ->helperText('Masukkan Jumlah Peserta')
+                    ->readOnly() // Nonaktifkan input manual
+                    ->helperText('Jumlah Peserta akan dihitung otomatis dari Laki-Laki dan Perempuan')
                     ->columnSpanFull(),
+                
+
 
             ]);
     }
@@ -157,16 +188,16 @@ class EduwisataResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama_lembaga')
-                ->label('Nama Lembaga')
-                ->searchable()
-                ->sortable()
-                ->description(fn (Eduwisata $record): string => 
+                    ->label('Nama Lembaga')
+                    ->searchable()
+                    ->sortable()
+                    ->description(fn(Eduwisata $record): string =>
                     ' Jumlah Peserta: ' . $record->jumlah_peserta, position: 'below'),
 
                 TextColumn::make('jadwal_kunjungan')
-                ->label('Jadwal Kunjungan')
-                ->formatStateUsing(fn ($state) => Carbon::parse($state)->isoFormat('DD MMMM YYYY'))
-                    
+                    ->label('Jadwal Kunjungan')
+                    ->formatStateUsing(fn($state) => Carbon::parse($state)->isoFormat('DD MMMM YYYY'))
+
             ])
             ->filters([
                 SelectFilter::make('asal_lembaga')
@@ -195,11 +226,11 @@ class EduwisataResource extends Resource
                         return $query
                             ->when(
                                 $data['created_from'],
-                                fn (Builder $query, $date): Builder => $query->whereDate('jadwal_kunjungan', '>=', Carbon::parse($date)->toDateString()),
+                                fn(Builder $query, $date): Builder => $query->whereDate('jadwal_kunjungan', '>=', Carbon::parse($date)->toDateString()),
                             )
                             ->when(
                                 $data['created_until'],
-                                fn (Builder $query, $date): Builder => $query->whereDate('jadwal_kunjungan', '<=', Carbon::parse($date)->toDateString()),
+                                fn(Builder $query, $date): Builder => $query->whereDate('jadwal_kunjungan', '<=', Carbon::parse($date)->toDateString()),
                             );
                     }),
 

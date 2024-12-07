@@ -202,7 +202,7 @@ class InovasiResource extends Resource
                                         'kota_bima' => 'Kota Bima',
                                         'kab_dompu' => 'Kab. Dompu',
                                     ])
-                                    ->default('kota mataram')
+                                    ->default('kota_mataram')
                                     ->required()
                                     ->helperText('Pilih Daerah Inovator'),
                             ]),
