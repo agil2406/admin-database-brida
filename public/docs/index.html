@@ -122,6 +122,12 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-daerah-riset">
                                 <a href="#endpoints-GETapi-daerah-riset">GET api/daerah-riset</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-bukus">
+                                <a href="#endpoints-GETapi-bukus">GET api/bukus</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-bukus--slug-">
+                                <a href="#endpoints-GETapi-bukus--slug-">GET api/bukus/{slug}</a>
+                            </li>
                                                                         </ul>
                             </ul>
             </div>
@@ -133,7 +139,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 25, 2024</li>
+        <li>Last updated: March 25, 2025</li>
     </ul>
 </div>
 
@@ -142,7 +148,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>https://brida.haidarrahman.my.id</code>
+    <strong>Base URL</strong>: <code>http://127.0.0.1:8000</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -168,14 +174,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/kategoris" \
+    --get "http://127.0.0.1:8000/api/kategoris" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/kategoris"
+    "http://127.0.0.1:8000/api/kategoris"
 );
 
 const headers = {
@@ -305,14 +311,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/kategoris/alat" \
+    --get "http://127.0.0.1:8000/api/kategoris/alat" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/kategoris/alat"
+    "http://127.0.0.1:8000/api/kategoris/alat"
 );
 
 const headers = {
@@ -442,14 +448,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/instansis" \
+    --get "http://127.0.0.1:8000/api/instansis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/instansis"
+    "http://127.0.0.1:8000/api/instansis"
 );
 
 const headers = {
@@ -579,14 +585,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/instansis/badan-riset-dan-inovasi-daerah-ntb" \
+    --get "http://127.0.0.1:8000/api/instansis/badan-riset-dan-inovasi-daerah-ntb" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/instansis/badan-riset-dan-inovasi-daerah-ntb"
+    "http://127.0.0.1:8000/api/instansis/badan-riset-dan-inovasi-daerah-ntb"
 );
 
 const headers = {
@@ -721,14 +727,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/jenis-programs" \
+    --get "http://127.0.0.1:8000/api/jenis-programs" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/jenis-programs"
+    "http://127.0.0.1:8000/api/jenis-programs"
 );
 
 const headers = {
@@ -858,14 +864,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/eduwisatas" \
+    --get "http://127.0.0.1:8000/api/eduwisatas" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/eduwisatas"
+    "http://127.0.0.1:8000/api/eduwisatas"
 );
 
 const headers = {
@@ -882,7 +888,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-eduwisatas">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -894,7 +900,14 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Data Eduwisata berdasarkan Daerah NTB dan Luar NTB&quot;,
+    &quot;data&quot;: {
+        &quot;total_peserta_ntb&quot;: &quot;163&quot;,
+        &quot;total_peserta_luar_ntb&quot;: 0,
+        &quot;total_lembaga_ntb&quot;: 2,
+        &quot;total_lembaga_luar_ntb&quot;: 0
+    }
 }</code>
  </pre>
     </span>
@@ -982,14 +995,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/eduwisatas/daerah-eduwisata" \
+    --get "http://127.0.0.1:8000/api/eduwisatas/daerah-eduwisata" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/eduwisatas/daerah-eduwisata"
+    "http://127.0.0.1:8000/api/eduwisatas/daerah-eduwisata"
 );
 
 const headers = {
@@ -1292,14 +1305,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/eduwisatas/asal-lembaga" \
+    --get "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/eduwisatas/asal-lembaga"
+    "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga"
 );
 
 const headers = {
@@ -1316,7 +1329,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-eduwisatas-asal-lembaga">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1328,7 +1341,70 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Data Eduwisata Sesuai Asal Lembaga&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;kategori&quot;: &quot;paud&quot;,
+            &quot;label&quot;: &quot;PAUD (Pendidikan Anak Usia Dini)&quot;,
+            &quot;total&quot;: &quot;120&quot;
+        },
+        {
+            &quot;kategori&quot;: &quot;tk&quot;,
+            &quot;label&quot;: &quot;TK (Taman Kanak-Kanak)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;sd&quot;,
+            &quot;label&quot;: &quot;SD (Sekolah Dasar)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;smp&quot;,
+            &quot;label&quot;: &quot;SMP (Sekolah Menengah Pertama)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;mts&quot;,
+            &quot;label&quot;: &quot;MTS (Madrasah Tsanawiyah)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;sma&quot;,
+            &quot;label&quot;: &quot;SMA (Sekolah Menengah Atas)&quot;,
+            &quot;total&quot;: &quot;43&quot;
+        },
+        {
+            &quot;kategori&quot;: &quot;ma&quot;,
+            &quot;label&quot;: &quot;MA (Madrasah Aliyah)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;smk&quot;,
+            &quot;label&quot;: &quot;SMK (Sekolah Menengah Kejuruan)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;slb&quot;,
+            &quot;label&quot;: &quot;SLB (Sekolah Luar Biasa)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;perguruan_tinggi&quot;,
+            &quot;label&quot;: &quot;Perguruan Tinggi (Universitas/Politeknik)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;instansi&quot;,
+            &quot;label&quot;: &quot;Instansi (Lembaga Pemerintahan atau Swasta)&quot;,
+            &quot;total&quot;: 0
+        },
+        {
+            &quot;kategori&quot;: &quot;lainnya&quot;,
+            &quot;label&quot;: &quot;Lainnya&quot;,
+            &quot;total&quot;: 0
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -1416,14 +1492,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/eduwisatas/asal-lembaga/enim" \
+    --get "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga/inventore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/eduwisatas/asal-lembaga/enim"
+    "http://127.0.0.1:8000/api/eduwisatas/asal-lembaga/inventore"
 );
 
 const headers = {
@@ -1533,10 +1609,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="label"                data-endpoint="GETapi-eduwisatas-asal-lembaga--label-"
-               value="enim"
+               value="inventore"
                data-component="url">
     <br>
-<p>Example: <code>enim</code></p>
+<p>Example: <code>inventore</code></p>
             </div>
                     </form>
 
@@ -1553,14 +1629,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/eduwisatas/daerah-lembaga" \
+    --get "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/eduwisatas/daerah-lembaga"
+    "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga"
 );
 
 const headers = {
@@ -1577,7 +1653,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-eduwisatas-daerah-lembaga">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1589,7 +1665,244 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Data Eduwisata Sesuai Daerah Lembaga&quot;,
+    &quot;data&quot;: {
+        &quot;ntb&quot;: [
+            {
+                &quot;kategori&quot;: &quot;kota_mataram&quot;,
+                &quot;label&quot;: &quot;Kota Mataram&quot;,
+                &quot;total&quot;: &quot;120&quot;
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_barat&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_timur&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Timur&quot;,
+                &quot;total&quot;: &quot;43&quot;
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_utara&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_lombok_tengah&quot;,
+                &quot;label&quot;: &quot;Kab. Lombok Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_sumbawa&quot;,
+                &quot;label&quot;: &quot;Kab. Sumbawa&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_sumbawa_barat&quot;,
+                &quot;label&quot;: &quot;Kab. Sumbawa Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_bima&quot;,
+                &quot;label&quot;: &quot;Kab. Bima&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kota_bima&quot;,
+                &quot;label&quot;: &quot;Kota Bima&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kab_dompu&quot;,
+                &quot;label&quot;: &quot;Kab. Dompu&quot;,
+                &quot;total&quot;: 0
+            }
+        ],
+        &quot;selain_ntb&quot;: [
+            {
+                &quot;kategori&quot;: &quot;aceh&quot;,
+                &quot;label&quot;: &quot;Aceh&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;bali&quot;,
+                &quot;label&quot;: &quot;Bali&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;banten&quot;,
+                &quot;label&quot;: &quot;Banten&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;bengkulu&quot;,
+                &quot;label&quot;: &quot;Bengkulu&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;yogyakarta&quot;,
+                &quot;label&quot;: &quot;Daerah Istimewa Yogyakarta&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jakarta&quot;,
+                &quot;label&quot;: &quot;Daerah Khusus Ibukota Jakarta&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;gorontalo&quot;,
+                &quot;label&quot;: &quot;Gorontalo&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jambi&quot;,
+                &quot;label&quot;: &quot;Jambi&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jawa_barat&quot;,
+                &quot;label&quot;: &quot;Jawa Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jawa_tengah&quot;,
+                &quot;label&quot;: &quot;Jawa Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;jawa_timur&quot;,
+                &quot;label&quot;: &quot;Jawa Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_barat&quot;,
+                &quot;label&quot;: &quot;Kalimantan Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_selatan&quot;,
+                &quot;label&quot;: &quot;Kalimantan Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_tengah&quot;,
+                &quot;label&quot;: &quot;Kalimantan Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_timur&quot;,
+                &quot;label&quot;: &quot;Kalimantan Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;kalimantan_utara&quot;,
+                &quot;label&quot;: &quot;Kalimantan Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;bangka_belitung&quot;,
+                &quot;label&quot;: &quot;Kepulauan Bangka Belitung&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;riau&quot;,
+                &quot;label&quot;: &quot;Riau&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;lampung&quot;,
+                &quot;label&quot;: &quot;Lampung&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;maluku&quot;,
+                &quot;label&quot;: &quot;Maluku&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;maluku_utara&quot;,
+                &quot;label&quot;: &quot;Maluku Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;ntt&quot;,
+                &quot;label&quot;: &quot;Nusa Tenggara Timur&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua&quot;,
+                &quot;label&quot;: &quot;Papua&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_barat&quot;,
+                &quot;label&quot;: &quot;Papua Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_barat_daya&quot;,
+                &quot;label&quot;: &quot;Papua Barat Daya&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_pegunungan&quot;,
+                &quot;label&quot;: &quot;Papua Pegunungan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_selatan&quot;,
+                &quot;label&quot;: &quot;Papua Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;papua_tengah&quot;,
+                &quot;label&quot;: &quot;Papua Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_barat&quot;,
+                &quot;label&quot;: &quot;Sulawesi Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_selatan&quot;,
+                &quot;label&quot;: &quot;Sulawesi Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_tengah&quot;,
+                &quot;label&quot;: &quot;Sulawesi Tengah&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_tenggara&quot;,
+                &quot;label&quot;: &quot;Sulawesi Tenggara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sulawesi_utara&quot;,
+                &quot;label&quot;: &quot;Sulawesi Utara&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sumatera_barat&quot;,
+                &quot;label&quot;: &quot;Sumatera Barat&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sumatera_selatan&quot;,
+                &quot;label&quot;: &quot;Sumatera Selatan&quot;,
+                &quot;total&quot;: 0
+            },
+            {
+                &quot;kategori&quot;: &quot;sumatera_utara&quot;,
+                &quot;label&quot;: &quot;Sumatera Utara&quot;,
+                &quot;total&quot;: 0
+            }
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -1677,14 +1990,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/eduwisatas/daerah-lembaga/aliquid" \
+    --get "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/eduwisatas/daerah-lembaga/aliquid"
+    "http://127.0.0.1:8000/api/eduwisatas/daerah-lembaga/quia"
 );
 
 const headers = {
@@ -1794,10 +2107,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="label"                data-endpoint="GETapi-eduwisatas-daerah-lembaga--label-"
-               value="aliquid"
+               value="quia"
                data-component="url">
     <br>
-<p>Example: <code>aliquid</code></p>
+<p>Example: <code>quia</code></p>
             </div>
                     </form>
 
@@ -1814,14 +2127,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/inovasis" \
+    --get "http://127.0.0.1:8000/api/inovasis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/inovasis"
+    "http://127.0.0.1:8000/api/inovasis"
 );
 
 const headers = {
@@ -1852,11 +2165,24 @@ access-control-allow-origin: *
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Daftar Inovasi&quot;,
-    &quot;data&quot;: [],
+    &quot;data&quot;: [
+        {
+            &quot;nama_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+            &quot;slug_inovasi&quot;: &quot;mesin-pencabut-uang&quot;,
+            &quot;nama_kategori&quot;: &quot;Alat&quot;,
+            &quot;tahun_inovasi&quot;: &quot;2024&quot;,
+            &quot;fungsi_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+            &quot;nama_inovator&quot;: &quot;Agil&quot;,
+            &quot;daerah_inovator&quot;: &quot;Kota Mataram&quot;,
+            &quot;status_inovasi&quot;: &quot;Non Digital&quot;,
+            &quot;nama_program&quot;: &quot;Gelar Teknologi Tepat Guna&quot;,
+            &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;
+        }
+    ],
     &quot;meta&quot;: {
         &quot;current_page&quot;: 1,
         &quot;per_page&quot;: 10,
-        &quot;total&quot;: 0,
+        &quot;total&quot;: 1,
         &quot;last_page&quot;: 1
     }
 }</code>
@@ -1946,14 +2272,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/inovasis/odio" \
+    --get "http://127.0.0.1:8000/api/inovasis/mesin-pencabut-uang" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/inovasis/odio"
+    "http://127.0.0.1:8000/api/inovasis/mesin-pencabut-uang"
 );
 
 const headers = {
@@ -1970,7 +2296,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-inovasis--slug-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1982,8 +2308,29 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Inovasi tidak ditemukan.&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Detail Inovasi Mesin Pencabut Uang&quot;,
+    &quot;data&quot;: {
+        &quot;nama_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+        &quot;slug_inovasi&quot;: &quot;mesin-pencabut-uang&quot;,
+        &quot;nama_kategori&quot;: &quot;Alat&quot;,
+        &quot;tahun_inovasi&quot;: &quot;2024&quot;,
+        &quot;fungsi_inovasi&quot;: &quot;Mesin Pencabut Uang&quot;,
+        &quot;nama_inovator&quot;: &quot;Agil&quot;,
+        &quot;kontak_inovator&quot;: &quot;+62878708716802&quot;,
+        &quot;alamat_inovator&quot;: &quot;Mesin Pencabut Uang&quot;,
+        &quot;daerah_inovator&quot;: &quot;Kota Mataram&quot;,
+        &quot;status_inovasi&quot;: &quot;Non Digital&quot;,
+        &quot;nama_program&quot;: &quot;Gelar Teknologi Tepat Guna&quot;,
+        &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;,
+        &quot;spesifikasi_inovasi&quot;: &quot;&lt;p&gt;Mesin Pencabut Uang&lt;/p&gt;&quot;,
+        &quot;sertifikat_inovasi&quot;: &quot;tidak&quot;,
+        &quot;desiminasi_inovasi&quot;: &quot;tidak&quot;,
+        &quot;file&quot;: {
+            &quot;nama_file&quot;: &quot;Mesin Pencabut Uang&quot;,
+            &quot;path_file&quot;: &quot;http://127.0.0.1:8000/storage/files/inovasi/inovasis-dokumen-pendukung-mesin-pencabut-bulu-ayam.pdf&quot;
+        }
+    }
 }</code>
  </pre>
     </span>
@@ -2063,10 +2410,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="slug"                data-endpoint="GETapi-inovasis--slug-"
-               value="odio"
+               value="mesin-pencabut-uang"
                data-component="url">
     <br>
-<p>The slug of the inovasi. Example: <code>odio</code></p>
+<p>The slug of the inovasi. Example: <code>mesin-pencabut-uang</code></p>
             </div>
                     </form>
 
@@ -2083,14 +2430,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/daerah-inovasi" \
+    --get "http://127.0.0.1:8000/api/daerah-inovasi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/daerah-inovasi"
+    "http://127.0.0.1:8000/api/daerah-inovasi"
 );
 
 const headers = {
@@ -2249,14 +2596,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/risets" \
+    --get "http://127.0.0.1:8000/api/risets" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/risets"
+    "http://127.0.0.1:8000/api/risets"
 );
 
 const headers = {
@@ -2287,11 +2634,21 @@ access-control-allow-origin: *
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Daftar Riset&quot;,
-    &quot;data&quot;: [],
+    &quot;data&quot;: [
+        {
+            &quot;judul_riset&quot;: &quot;Masukan Utang&quot;,
+            &quot;slug_riset&quot;: &quot;masukan-utang&quot;,
+            &quot;nama_kategori&quot;: &quot;Pendidikan&quot;,
+            &quot;tahun_riset&quot;: &quot;2024&quot;,
+            &quot;nama_peneliti&quot;: &quot;Agil&quot;,
+            &quot;daerah_peneliti&quot;: &quot;Kota Mataram&quot;,
+            &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;
+        }
+    ],
     &quot;meta&quot;: {
         &quot;current_page&quot;: 1,
         &quot;per_page&quot;: 10,
-        &quot;total&quot;: 0,
+        &quot;total&quot;: 1,
         &quot;last_page&quot;: 1
     }
 }</code>
@@ -2381,14 +2738,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/risets/enim" \
+    --get "http://127.0.0.1:8000/api/risets/masukan-utang" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/risets/enim"
+    "http://127.0.0.1:8000/api/risets/masukan-utang"
 );
 
 const headers = {
@@ -2405,7 +2762,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-risets--slug-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2417,8 +2774,31 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;riset tidak ditemukan.&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Detail riset &quot;,
+    &quot;data&quot;: {
+        &quot;judul_riset&quot;: &quot;Masukan Utang&quot;,
+        &quot;slug_riset&quot;: &quot;masukan-utang&quot;,
+        &quot;nama_kategori&quot;: &quot;Pendidikan&quot;,
+        &quot;tahun_riset&quot;: &quot;2024&quot;,
+        &quot;deskripsi_riset&quot;: &quot;&lt;p&gt;Masukan Utang&lt;/p&gt;&quot;,
+        &quot;nama_peneliti&quot;: &quot;Agil&quot;,
+        &quot;kontak_peneliti&quot;: &quot;+62878787131&quot;,
+        &quot;alamat_peneliti&quot;: &quot;Masukan Utang&quot;,
+        &quot;daerah_peneliti&quot;: &quot;Kota Mataram&quot;,
+        &quot;nama_instansi&quot;: &quot;Badan Riset dan Inovasi Daerah NTB&quot;,
+        &quot;desiminasi_riset&quot;: &quot;tidak&quot;,
+        &quot;file&quot;: [
+            {
+                &quot;nama_file&quot;: &quot;Masukan Utang&quot;,
+                &quot;path_file&quot;: &quot;http://127.0.0.1:8000/storage/files/riset/riset-dokumen-pendukung-mesin-pencabut-bulu-ayam.pdf&quot;
+            },
+            {
+                &quot;nama_file&quot;: &quot;Masukan Utang 2&quot;,
+                &quot;path_file&quot;: &quot;http://127.0.0.1:8000/storage/files/riset/riset-data-akun-credential-salva-inti-property.pdf&quot;
+            }
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -2498,10 +2878,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="slug"                data-endpoint="GETapi-risets--slug-"
-               value="enim"
+               value="masukan-utang"
                data-component="url">
     <br>
-<p>The slug of the riset. Example: <code>enim</code></p>
+<p>The slug of the riset. Example: <code>masukan-utang</code></p>
             </div>
                     </form>
 
@@ -2518,14 +2898,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://brida.haidarrahman.my.id/api/daerah-riset" \
+    --get "http://127.0.0.1:8000/api/daerah-riset" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://brida.haidarrahman.my.id/api/daerah-riset"
+    "http://127.0.0.1:8000/api/daerah-riset"
 );
 
 const headers = {
@@ -2670,6 +3050,283 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                    <h2 id="endpoints-GETapi-bukus">GET api/bukus</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-bukus">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/bukus" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/bukus"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-bukus">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Daftar Buku&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;judul&quot;: &quot;Testing&quot;,
+            &quot;slug_buku&quot;: &quot;testing&quot;,
+            &quot;penulis&quot;: &quot;Agil Treieato&quot;,
+            &quot;penerbit&quot;: &quot;Agil&quot;,
+            &quot;tanggal_terbit&quot;: &quot;2025-03-07&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 10,
+        &quot;total&quot;: 1,
+        &quot;last_page&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-bukus" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-bukus"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-bukus"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-bukus" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-bukus">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-bukus" data-method="GET"
+      data-path="api/bukus"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-bukus', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-bukus"
+                    onclick="tryItOut('GETapi-bukus');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-bukus"
+                    onclick="cancelTryOut('GETapi-bukus');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-bukus"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/bukus</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-bukus"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-bukus"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-bukus--slug-">GET api/bukus/{slug}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-bukus--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/bukus/illum" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/bukus/illum"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-bukus--slug-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Buku tidak ditemukan.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-bukus--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-bukus--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-bukus--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-bukus--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-bukus--slug-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-bukus--slug-" data-method="GET"
+      data-path="api/bukus/{slug}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-bukus--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-bukus--slug-"
+                    onclick="tryItOut('GETapi-bukus--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-bukus--slug-"
+                    onclick="cancelTryOut('GETapi-bukus--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-bukus--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/bukus/{slug}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-bukus--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-bukus--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-bukus--slug-"
+               value="illum"
+               data-component="url">
+    <br>
+<p>The slug of the buku. Example: <code>illum</code></p>
+            </div>
+                    </form>
 
             
 

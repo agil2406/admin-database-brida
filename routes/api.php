@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BukuController;
 use App\Http\Controllers\Api\EduwisataController;
 use App\Http\Controllers\Api\InovasiController;
 use App\Http\Controllers\Api\InstansiController;
@@ -37,3 +38,7 @@ Route::get('/daerah-inovasi', [InovasiController::class, 'daerahInovasi']);
 Route::get('/risets', [RisetController::class, 'index']);
 Route::get('/risets/{slug}', [RisetController::class, 'detailRiset']);
 Route::get('/daerah-riset', [RisetController::class, 'daerahRiset']);
+
+// buku
+Route::get('/bukus', [BukuController::class, 'index']);
+Route::get('/bukus/{slug}', [BukuController::class, 'detailBuku']);
