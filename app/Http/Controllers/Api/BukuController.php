@@ -23,7 +23,7 @@ class BukuController extends Controller
         }
 
         if ($request->filled('tanggal')) {
-            $query->where('tanggal_terbit', $request->tahun);
+            $query->where('tanggal_terbit', $request->tanggal);
         }
 
 
